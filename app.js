@@ -1,10 +1,14 @@
-const express = require("express");
-const path = require("path");
 const cookieParser = require("cookie-parser");
+const express = require("express");
+const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const path = require("path");
+
 const port = 3000;
 
 const app = express();
+
+const RS_PRIVATE_KEY = fs.readFileSync(__dirname + "/jwtRS256.key");
 
 const user = { UID: "Sevena2", email: "sevena@gmail.com", password: "15697" };
 app.use(cookieParser("cookie-secret"));
@@ -19,16 +23,17 @@ app.get("/login", (req, res) => {
   if (email === user.email && password === user.password) {
     console.log("Burada");
     // sign 1.parametre: Token içerisinde şifrelenmiş bilgi, sign 2.parametre: token sahi
-    const token = jwt.sign({ UID: user.UID }, "jwt-secret-one", {
+    const token = jwt.sign({ UID: user.UID }, RS_PRIVATE_KEY, {
       expiresIn: "1d",
+      algorithm: "HS256",
     });
     //Authorization=Token
     res.cookie("Authorization", token, {
       expires: new Date(new Date().setDate(new Date().getDate() + 1)),
       httpOnly: true,
-      signed: true,
     });
     res.redirect(redirectUrl);
+    console.log(token);
     return;
   }
   res.status(401).send();
