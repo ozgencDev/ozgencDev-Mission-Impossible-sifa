@@ -6,7 +6,7 @@ const pool = createPool({
   host: "localhost",
   user: "root",
   port: 3306,
-  password: "q123",
+  password: "new123",
   connectionLimit: 10,
 })
 
