@@ -4,9 +4,7 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const cors = require('cors')
 const {createPool} = require("mysql");
-
 const app = express();
-
 // const usersRoute = require('./routes/users')
 
 const dbConfig = createPool({
@@ -32,7 +30,7 @@ const connection = mysql.createConnection({
   user: "root",
   port: 3306,
   password: "new123",
-  database: "usersdb",
+  database: "users",
 });
 
 // open the MySQL connection
@@ -63,6 +61,16 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to mission impossible application." });
 });
 
+app.get('/createtable', (req, res) => {
+  let sql = "CREATE TABLE token_users("
+    "token VARCHAR(100) NOT NULL AUTO_INCREMENT)";
+  connection.query(sql, (err, result) => {
+      if (err) throw err;
+      console.log(result);
+      res.send('Database created...');
+  });
+});
+
 
 require("./routes/user.routes.js")(app);
 
@@ -72,3 +80,4 @@ const PORT = process.env.PORT || 3306;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
