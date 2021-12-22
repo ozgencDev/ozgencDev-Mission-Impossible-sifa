@@ -9,12 +9,13 @@ const port = 3000;
 
 const app = express();
 
-app.use(morgan('common', {
-  stream: fs.createWriteStream('./access.log', {flags: 'a'})
+app.use(morgan('tiny', {
+  stream: fs.createWriteStream('./access.txt', {flags: 'a'})
 }));
 
 app.use(morgan('dev'));
 
+/*
 
 const RS_PRIVATE_KEY = fs.readFileSync(__dirname + "/jwtRS256.key");
 
@@ -49,6 +50,7 @@ app.get("/login", (req, res) => {
   res.status(401).send();
 });
 
+*/
 
 /*app.get("/auth", (req, res) => {
   const authToken = req.signedCookies["Authorization"];
