@@ -44,7 +44,7 @@ User.deleteuser = (id, result) => {
 };
 
 User.updateuser = (id, User, result) => {
-  sql.query("UPDATE Users SET username = ?, SET user_name = ?, SET user_surname = ?, SET email = ?, SET user_type = ?, SET password = ?,  WHERE id = ?", [User.username, User.user_name, User.user_surname, User.email, User.user_type, User.password, id], (err, res) => {
+  sql.query("UPDATE Users SET username = ?, user_name = ?, user_surname = ?, email = ?, user_type = ?, password = ?  WHERE id = ?", [User.username, User.user_name, User.user_surname, User.email, User.user_type, User.password, id], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
