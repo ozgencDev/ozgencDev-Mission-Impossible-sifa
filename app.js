@@ -3,15 +3,25 @@ const express = require("express");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+const morgan = require("morgan");
 
 const port = 3000;
 
 const app = express();
 
+app.use(morgan('common', {
+  stream: fs.createWriteStream('./access.log', {flags: 'a'})
+}));
+
+app.use(morgan('dev'));
+
+
 const RS_PRIVATE_KEY = fs.readFileSync(__dirname + "/jwtRS256.key");
 
 const user = { UID: "Sevena2", email: "sevena@gmail.com", password: "15697" };
 app.use(cookieParser("cookie-secret"));
+
+
 
 app.get("/login-page", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
@@ -38,6 +48,7 @@ app.get("/login", (req, res) => {
   }
   res.status(401).send();
 });
+
 
 /*app.get("/auth", (req, res) => {
   const authToken = req.signedCookies["Authorization"];
