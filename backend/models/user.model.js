@@ -1,85 +1,30 @@
 const sql = require("./db.js");
 
 // constructor
-const User = function(User) {
-  this.name = User.name;
+const User = function (User) {
+  // this.token = User.token;
+  this.username = User.username;
+  this.user_name = User.user_name;
+  this.user_surname = User.user_surname;
+  this.password = User.password;
+  this.email = User.email;
+  this.user_type = User.user_type;
 };
 
-User.create = (newUser, result) => {
-  sql.query("INSERT INTO Users SET ?", newUser, (err, res) => {
+User.createuser = (req, result) => {
+  sql.query("INSERT INTO Users SET ?", req, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("created User: ", { id: res.insertId, ...newUser });
-    result(null, { id: res.insertId, ...newUser });
+    console.log("created User: ", { id: res.insertId, ...req });
+    result(null, { id: res.insertId, ...req });
   });
 };
 
-User.findById = (id, result) => {
-  sql.query(`SELECT * FROM Users WHERE id = ${id}`, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
-
-    if (res.length) {
-      console.log("found User: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-
-    // not found User with the id
-    result({ kind: "not_found" }, null);
-  });
-};
-
-User.getAll = (name, result) => {
-  let query = "SELECT * FROM Users";
-
-  if (name) {
-    query += ` WHERE name LIKE '%${name}%'`;
-  }
-
-  sql.query(query, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("Users: ", res);
-    result(null, res);
-  });
-};
-
-User.updateById = (id, User, result) => {
-  sql.query(
-    "UPDATE Users SET name = ?, WHERE id = ?",
-    [User.name, id],
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-        return;
-      }
-
-      if (res.affectedRows == 0) {
-        // not found User with the id
-        result({ kind: "not_found" }, null);
-        return;
-      }
-
-      console.log("updated User: ", { id: id, ...User });
-      result(null, { id: id, ...User });
-    }
-  );
-};
-
-User.remove = (id, result) => {
+User.deleteuser = (id, result) => {
   sql.query("DELETE FROM Users WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -98,17 +43,61 @@ User.remove = (id, result) => {
   });
 };
 
-User.removeAll = result => {
-  sql.query("DELETE FROM Users", (err, res) => {
+User.updateuser = (id, User, result) => {
+  sql.query("UPDATE Users SET username = ?, SET user_name = ?, SET user_surname = ?, SET email = ?, SET user_type = ?, SET password = ?,  WHERE id = ?", [User.username, User.user_name, User.user_surname, User.email, User.user_type, User.password, id], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    console.log(`deleted ${res.affectedRows} Users`);
-    result(null, res);
+    if (res.affectedRows == 0) {
+      // not found User with the id
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    console.log("updated User: ", { id: id, ...User });
+    result(null, { id: id, ...User });
   });
 };
+
+// User.getUserInfo = (id, result) => {
+//   sql.query(`SELECT * FROM Users WHERE id = ${id}`, (err, res) => {
+//     if (err) {
+//       console.log("error: ", err);
+//       result(err, null);
+//       return;
+//     }
+
+//     if (res.length) {
+//       console.log("found User: ", res[0]);
+//       result(null, res[0]);
+//       return;
+//     }
+
+//     // not found User with the id
+//     result({ kind: "not_found" }, null);
+//   });
+// };
+
+// User.getListOfUsers = (username, result) => {
+//   let query = "SELECT * FROM Users";
+
+//   if (username) {
+//     query += ` WHERE name LIKE '%${username}%'`;
+//   }
+
+//   sql.query(query, (err, res) => {
+//     if (err) {
+//       console.log("error: ", err);
+//       result(null, err);
+//       return;
+//     }
+
+//     console.log("Users: ", res);
+//     result(null, res);
+//   });
+// };
 
 module.exports = User;
