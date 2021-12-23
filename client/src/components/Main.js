@@ -12,8 +12,10 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
+  DropdownItem
 } from "reactstrap";
+import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
 
 function Main() {
   return (
@@ -41,7 +43,7 @@ function Main() {
       </Navbar>
 
       <div className="user-list">
-          
+          <TodoList></TodoList>
       </div>
     </div>
   );
