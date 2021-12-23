@@ -19,6 +19,10 @@ User.createuser = (req, result) => {
       return;
     }
 
+    // if (await User.findOne({ where: { username: req.body.username } })) {
+    //   throw 'Username "' + req.body.username + '" is already taken';
+    // }
+
     console.log("created User: ", { id: res.insertId, ...req });
     result(null, { id: res.insertId, ...req });
   });
@@ -62,42 +66,42 @@ User.updateuser = (id, User, result) => {
   });
 };
 
-// User.getUserInfo = (id, result) => {
-//   sql.query(`SELECT * FROM Users WHERE id = ${id}`, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(err, null);
-//       return;
-//     }
+User.getUserInfo = (id, result) => {
+  sql.query(`SELECT * FROM Users WHERE id = ${id}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
 
-//     if (res.length) {
-//       console.log("found User: ", res[0]);
-//       result(null, res[0]);
-//       return;
-//     }
+    if (res.length) {
+      console.log("found User: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
 
-//     // not found User with the id
-//     result({ kind: "not_found" }, null);
-//   });
-// };
+    // not found User with the id
+    result({ kind: "not_found" }, null);
+  });
+};
 
-// User.getListOfUsers = (username, result) => {
-//   let query = "SELECT * FROM Users";
+User.getListOfUsers = (username, result) => {
+  let query = "SELECT * FROM Users";
 
-//   if (username) {
-//     query += ` WHERE name LIKE '%${username}%'`;
-//   }
+  if (username) {
+    query += ` WHERE name LIKE '%${username}%'`;
+  }
 
-//   sql.query(query, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(null, err);
-//       return;
-//     }
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
 
-//     console.log("Users: ", res);
-//     result(null, res);
-//   });
-// };
+    console.log("Users: ", res);
+    result(null, res);
+  });
+};
 
 module.exports = User;

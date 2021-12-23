@@ -13,10 +13,10 @@ module.exports = app => {
   router.put("/update-user/:id", users.updateuser);
 
   // Retrieve all users
-  // router.get("/", users.getListOfUsers);
+  router.get("/users", users.getListOfUsers);
 
   // Retrieve a single user with id
-  // router.get("/:id", users.getUserInfo);
+  router.get("/user/:id", users.getUserInfo);
 
   app.use('/api/users', router);
 };
