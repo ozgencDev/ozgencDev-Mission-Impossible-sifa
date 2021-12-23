@@ -3,7 +3,7 @@ const session = require("express-session");
 const router = express.Router();
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
-const { postlogin } = require("./Middleware/serverFunctionality.js");
+const { postlogin, logout } = require("./Middleware/serverFunctionality.js");
 
 const app = express();
 
@@ -38,6 +38,9 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", postlogin);
+
+//logout middleware
+app.get("/logout", logout);
 
 app.listen(3010, () => {
   console.log("Server is running on port 3010 -- Server");

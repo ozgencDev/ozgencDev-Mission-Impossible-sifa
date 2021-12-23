@@ -8,13 +8,17 @@ const db = {
 };
 
 const getlogin = (req, res) => {
+  console.log(req.headers);
   const { serviceURL } = req.query;
   const { email, password } = req.body;
   res.redirect(serviceURL);
 };
 
 const postlogin = (req, res) => {
-  const { serviceURL } = req.query;
+  console.log(req.headers);
+  const index = req.headers.referer.indexOf("=");
+  const serviceURL = req.headers.referer.slice(index + 1);
+  console.log(serviceURL);
   const { email, password } = req.body;
 
   if (email === db.email && password === db.password) {
@@ -31,4 +35,10 @@ const postlogin = (req, res) => {
   res.status(401).send("Invalid username or password");
 };
 
-module.exports = Object.assign({}, { postlogin });
+//Burayı değiştir logout mantığın yanlış olabilir
+const logout = (req, res) => {
+  res.clearCookie("authorization");
+  res.send("Logged out");
+};
+
+module.exports = Object.assign({}, { postlogin, logout });
