@@ -1,4 +1,5 @@
 const fs = require("fs");
+const url = require("url");
 const jwt = require("jsonwebtoken");
 
 const db = {
@@ -15,10 +16,19 @@ const getlogin = (req, res) => {
 };
 
 const postlogin = (req, res) => {
-  console.log(req.headers);
-  const index = req.headers.referer.indexOf("=");
-  const serviceURL = req.headers.referer.slice(index + 1);
-  console.log(serviceURL);
+  const referer = req.headers.referer;
+
+  let redirect;
+  if (typeof referer == "string") {
+    /* handling for browser */
+    const { serviceURL } = url.parse(referer, true).query;
+    redirect = serviceURL;
+  } else {
+    /* handling for postman */
+    const { serviceURL } = req.query;
+    redirect = serviceURL;
+  }
+
   const { email, password } = req.body;
 
   if (email === db.email && password === db.password) {
@@ -28,7 +38,7 @@ const postlogin = (req, res) => {
       algorithm: "RS256",
     });
     res.cookie("authorization", token, { httpOnly: true, signed: true });
-    res.redirect(serviceURL);
+    res.redirect(redirect);
     return;
   }
 
