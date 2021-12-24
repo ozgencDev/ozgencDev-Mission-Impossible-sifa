@@ -1,6 +1,7 @@
 const fs = require("fs");
 const url = require("url");
 const jwt = require("jsonwebtoken");
+const User = require("../../api/controller/models/userModel");
 
 exports.html = (req, res) => {
   res.send(`
@@ -12,7 +13,7 @@ exports.html = (req, res) => {
   `);
 };
 
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
   const referer = req.headers.referer;
   let redirect;
   if (typeof referer == "string") {
@@ -22,22 +23,29 @@ exports.login = (req, res) => {
     const { serviceURL } = req.query;
     redirect = serviceURL;
   }
-  const { email, password } = req.body;
-  if (email === db.email && password === db.password) {
-    const secret = fs.readFileSync(__dirname + "/Keys/Private.key");
-    const refreshSecret = fs.readFileSync(__dirname + "/Keys/refreshToken.key");
-    const accessToken = jwt.sign({ UID: db.UID }, secret, {
-      expiresIn: "15s",
-      algorithm: "RS256",
-    });
-    const refreshToken = jwt.sign({ UID: db.UID }, refreshSecret, {
-      algorithm: "RS256",
-    });
-    res.cookie("authorization", accessToken, { httpOnly: true, signed: true });
-    res.redirect(redirect);
-    return;
-  }
-  res.status(401).send("Invalid username or password");
+  const { username, password } = req.body;
+
+  User.login(username, password, (err, data) => {
+    if (username === data.username && password === data.password) {
+      const secret = fs.readFileSync(__dirname + "/Keys/Private.key");
+
+      const accessToken = jwt.sign({ UID: data.id }, secret, {
+        expiresIn: "1d",
+        algorithm: "RS256",
+      });
+
+      res.cookie("authorization", accessToken, {
+        httpOnly: true,
+        signed: true,
+      });
+
+      res.redirect(redirect);
+
+      return;
+    }
+    console.log("4");
+    res.status(401).send("Invalid username or password");
+  });
 };
 
 exports.logout = (req, res) => {
@@ -47,10 +55,4 @@ exports.logout = (req, res) => {
 
 exports.hello = (req, res) => {
   res.send("Hello World from Auth");
-};
-
-const db = {
-  UID: "BENUID98",
-  email: "ozgencdev@gmail.com",
-  password: "123456",
 };
