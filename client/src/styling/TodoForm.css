@@ -1,0 +1,9 @@
+.todo-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-right: 600px;
+    padding-left: 600px;
+    border-radius: 20px;
+}

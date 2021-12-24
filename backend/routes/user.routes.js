@@ -4,7 +4,7 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Create a new user
-  router.post("/", users.createuser);
+  router.post("/create-user/", users.createuser);
 
   // Delete a user with id
   router.delete("/delete-user/:id", users.deleteuser);
@@ -18,5 +18,8 @@ module.exports = app => {
   // Retrieve a single user with id
   router.get("/user/:id", users.getUserInfo);
 
-  app.use('/api/users', router);
+  // Login user
+  router.post("/login", users.login);
+
+  app.use('/api', router);
 };

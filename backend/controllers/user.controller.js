@@ -14,7 +14,7 @@ exports.createuser = (req, res) => {
     username: req.body.username,
     user_name: req.body.user_name,
     user_surname: req.body.user_surname,
-    password: req.body.password, 
+    password: req.body.password,
     email: req.body.email,
     user_type: req.body.user_type
   });
@@ -72,33 +72,52 @@ exports.updateuser = (req, res) => {
   });
 };
 
+// Retrieve all users from the database (with condition).
+exports.getListOfUsers = (req, res) => {
+  const username = req.query.username;
 
-  // Retrieve all users from the database (with condition).
-  exports.getListOfUsers = (req, res) => {
-    const username = req.query.username;
+  User.getListOfUsers(username, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving users."
+      });
+    else res.send(data);
+  });
+};
 
-    User.getListOfUsers(username, (err, data) => {
-      if (err)
-        res.status(500).send({
-          message: err.message || "Some error occurred while retrieving users."
+// Find a single user with a id
+exports.getUserInfo = (req, res) => {
+  User.getUserInfo(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User with id ${req.params.id}.`
         });
-      else res.send(data);
-    });
-  };
+      } else {
+        res.status(500).send({
+          message: "Error retrieving User with id " + req.params.id
+        });
+      }
+    } else res.send(data);
+  });
+};
 
-  // Find a single user with a id
-  exports.getUserInfo = (req, res) => {
-    User.getUserInfo(req.params.id, (err, data) => {
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found User with id ${req.params.id}.`
-          });
-        } else {
-          res.status(500).send({
-            message: "Error retrieving User with id " + req.params.id
-          });
-        }
-      } else res.send(data);
-    });
-  };
+exports.login = (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.login(username, password, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving User "
+        });
+      }
+    }
+    else res.send(data);
+  });
+};
