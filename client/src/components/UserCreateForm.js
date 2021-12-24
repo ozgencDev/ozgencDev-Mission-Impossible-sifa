@@ -4,16 +4,16 @@ import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
-function TodoForm({addTodo}) {
+function UserCreateForm({createUser}) {
     const [user_name, setUser_name] = useState("");
     const [user_surname, setUser_surname] = useState("");
-    const [userEmail, setUserEmail] = useState("");
+    const [email, setUserEmail] = useState("");
 
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
     const handleSubmit = e => {
         e.preventDefault();
-        if(!(emailRegex.test(userEmail))){
+        if(!(emailRegex.test(email))){
           toast.error('Email format is wrong or empty!', {position: toast.POSITION.TOP_CENTER});
         }
         else if(user_name !== null && user_name === ""){
@@ -23,7 +23,7 @@ function TodoForm({addTodo}) {
           toast.error('Surname can not be empty', {position: toast.POSITION.TOP_CENTER});
         }
         else{
-          addTodo({user_name, user_surname, userEmail});
+          createUser({user_name, user_surname, email});
         }
         
     }
@@ -41,4 +41,4 @@ function TodoForm({addTodo}) {
   );
 }
 
-export default TodoForm;
+export default UserCreateForm;

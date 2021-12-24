@@ -1,8 +1,8 @@
 import React from "react";
 import {Table} from "reactstrap";
 
-function DisplayTodo({todos}) {
-    console.log(todos);
+function UsersList({users}) {
+    console.log(users);
   return (
     <Table striped bordered hover size="sm">
   <thead>
@@ -14,12 +14,12 @@ function DisplayTodo({todos}) {
     </tr>
   </thead>
   <tbody>
-    {todos.map((todo, key) => (
+    {users.map((user, key) => (
       <tr>
         <td>{key+1}</td>
-        <td>{todo.user_name}</td>
-        <td>{todo.user_surname}</td>
-        <td>{todo.userEmail}</td>
+        <td>{user.user_name}</td>
+        <td>{user.user_surname}</td>
+        <td>{user.email}</td>
       </tr>
     ))}
   </tbody>
@@ -27,4 +27,4 @@ function DisplayTodo({todos}) {
   );
 }
 
-export default DisplayTodo;
+export default UsersList;

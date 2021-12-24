@@ -14,8 +14,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
+import Dashboard from "./Dashboard";
 
 function Main() {
   return (
@@ -43,7 +42,7 @@ function Main() {
       </Navbar>
 
       <div className="user-list">
-          <TodoList></TodoList>
+          <Dashboard></Dashboard>
       </div>
     </div>
   );
