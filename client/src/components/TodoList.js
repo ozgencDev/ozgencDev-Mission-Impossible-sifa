@@ -7,7 +7,7 @@ function TodoList() {
 
     const addTodo = todo => {
         //We set the new todos with the old ones here.
-        setTodos(...todos, todo);
+        setTodos([...todos, todo]);
       };
 
     const updateTodo = (todoId) => {

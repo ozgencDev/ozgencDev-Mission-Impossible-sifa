@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
+    "crypto-js": "^4.1.1",
     "express": "^4.17.2",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "react-toastr": "^3.0.0"
   }
 }

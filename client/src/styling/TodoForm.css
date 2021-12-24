@@ -1,9 +1,12 @@
+.form-div{
+   width:450px; /* or whatever width you want. */
+   max-width:450px; /* or whatever width you want. */
+   display: inline-block;
+}
+
 .todo-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    padding-right: 600px;
-    padding-left: 600px;
-    border-radius: 20px;
+
 }
