@@ -3,6 +3,7 @@ const session = require("express-session");
 const router = express.Router();
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
+const authRoute = require("./auth/route");
 const { postlogin, logout } = require("./Middleware/serverFunctionality.js");
 
 const app = express();
