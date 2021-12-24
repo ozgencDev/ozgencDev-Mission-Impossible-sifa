@@ -1,11 +1,13 @@
 const fs = require("fs");
 const url = require("url");
 const jwt = require("jsonwebtoken");
+const generateAccess = require("./generateAccessToken");
 
 const db = {
   UID: "BENUID98",
   email: "ozgencdev@gmail.com",
   password: "123456",
+  refreshToken: "abcde",
 };
 
 const getlogin = (req, res) => {
@@ -17,7 +19,6 @@ const getlogin = (req, res) => {
 
 const postlogin = (req, res) => {
   const referer = req.headers.referer;
-
   let redirect;
   if (typeof referer == "string") {
     /* handling for browser */
@@ -32,11 +33,7 @@ const postlogin = (req, res) => {
   const { email, password } = req.body;
 
   if (email === db.email && password === db.password) {
-    const secret = fs.readFileSync("./Keys/Private.key");
-    const token = jwt.sign({ UID: db.UID }, secret, {
-      expiresIn: "1d",
-      algorithm: "RS256",
-    });
+    token = generateAccess;
     res.cookie("authorization", token, { httpOnly: true, signed: true });
     res.redirect(redirect);
     return;
