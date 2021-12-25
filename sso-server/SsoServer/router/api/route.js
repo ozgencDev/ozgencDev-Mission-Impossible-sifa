@@ -14,9 +14,9 @@ router.route("/hello").get(hello);
 
 router.route("/create").post(isAuthorized, createUser);
 
-router.route("/delete").delete(isAuthorized, deleteUser);
+router.route("/delete/:id").delete(isAuthorized, deleteUser);
 
-router.route("/update").put(isAuthorized, updateUser);
+router.route("/update/:id").put(isAuthorized, updateUser);
 
 router.route("/users").get(isAuthorized, getListOfUsers);
 

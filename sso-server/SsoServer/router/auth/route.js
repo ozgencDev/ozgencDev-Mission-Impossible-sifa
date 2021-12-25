@@ -9,7 +9,7 @@ const {
 
 router.route("/login").get(html);
 router.route("/login").post(login);
-router.route("/logout").post(logout);
+router.route("/logout").get(logout);
 router.route("/hello").get(hello);
 
 module.exports = router;
