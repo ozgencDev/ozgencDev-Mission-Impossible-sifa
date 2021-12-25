@@ -2,6 +2,7 @@ const fs = require("fs");
 const url = require("url");
 const jwt = require("jsonwebtoken");
 const User = require("../../api/controller/models/userModel");
+const hashPassword = require("../middleware/compareHash");
 
 exports.html = (req, res) => {
   res.send(`
@@ -25,8 +26,14 @@ exports.login = async (req, res) => {
   }
   const { username, password } = req.body;
 
-  User.login(username, password, (err, data) => {
-    if (username === data.username && password === data.password) {
+  User.login(username, (err, data) => {
+    console.log(data, "******************");
+    const salt = data.salt; //sql squry salt
+    const hashedPassword = data.password; //sql query hashPassword
+    const newGenHashPassword = hashPassword(password, salt); //new hash and salt with user password
+
+    if (username === data.username && hashedPassword === newGenHashPassword) {
+      //compare newGenHashPassword with hashedPassword in database
       const secret = fs.readFileSync(__dirname + "/Keys/Private.key");
 
       const accessToken = jwt.sign({ UID: data.id }, secret, {

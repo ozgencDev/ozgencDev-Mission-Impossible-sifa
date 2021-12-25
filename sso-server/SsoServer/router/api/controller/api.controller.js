@@ -12,13 +12,13 @@ exports.createUser = (req, res) => {
       message: "Content can not be empty!",
     });
   }
-
   // Create a User
   const user = new User({
     username: req.body.username,
     user_name: req.body.user_name,
     user_surname: req.body.user_surname,
     password: req.body.password,
+    salt: req.body.salt,
     email: req.body.email,
     user_type: req.body.user_type,
   });
@@ -107,7 +107,7 @@ exports.getUserInfo = (req, res) => {
   });
 };
 
-exports.login = (req, res) => {
+/* exports.login = (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -124,4 +124,4 @@ exports.login = (req, res) => {
       }
     } else res.send(data);
   });
-};
+}; */

@@ -9,10 +9,11 @@ const {
   createUser,
 } = require("./controller/api.controller.js");
 const { isAuthorized } = require("./middleware/validation.js");
+const { saltHashPassword } = require("./middleware/saltHash.js");
 
 router.route("/hello").get(hello);
 
-router.route("/create").post(isAuthorized, createUser);
+router.route("/create").post(isAuthorized, saltHashPassword, createUser);
 
 router.route("/delete/:id").delete(isAuthorized, deleteUser);
 
@@ -22,13 +23,6 @@ router.route("/users").get(isAuthorized, getListOfUsers);
 
 router.route("/user/:id").get(isAuthorized, getUserInfo);
 
-console.log(
-  hello,
-  deleteUser,
-  updateUser,
-  getListOfUsers,
-  getUserInfo,
-  createUser
-);
+console.log(saltHashPassword);
 
 module.exports = router;

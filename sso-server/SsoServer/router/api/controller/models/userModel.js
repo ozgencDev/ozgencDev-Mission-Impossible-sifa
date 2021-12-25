@@ -7,6 +7,7 @@ const User = function (User) {
   this.user_name = User.user_name;
   this.user_surname = User.user_surname;
   this.password = User.password;
+  this.salt = User.salt;
   this.email = User.email;
   this.user_type = User.user_type;
 };
@@ -49,7 +50,7 @@ User.deleteuser = (id, result) => {
 
 User.updateuser = (id, User, result) => {
   sql.query(
-    "UPDATE Users SET username = ?, user_name = ?, user_surname = ?, email = ?, user_type = ?, password = ?  WHERE id = ?",
+    "UPDATE Users SET username = ?, user_name = ?, user_surname = ?, email = ?, user_type = ?, password = ?, salt = ?  WHERE id = ?",
     [
       User.username,
       User.user_name,
@@ -57,6 +58,7 @@ User.updateuser = (id, User, result) => {
       User.email,
       User.user_type,
       User.password,
+      User.salt,
       id,
     ],
     (err, res) => {
@@ -116,10 +118,10 @@ User.getListOfUsers = (username, result) => {
   });
 };
 
-User.login = (username, password, result) => {
+User.login = (username, result) => {
   sql.query(
-    "SELECT * FROM Users WHERE username = ? AND password = ?",
-    [username, password],
+    "SELECT * FROM Users WHERE username = ?",
+    [username],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
