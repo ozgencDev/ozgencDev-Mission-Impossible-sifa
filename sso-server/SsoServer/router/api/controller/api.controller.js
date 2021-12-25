@@ -35,7 +35,6 @@ exports.createUser = (req, res) => {
 
 // Delete a user with the specified id in the request
 exports.deleteUser = (req, res) => {
-  console.log(req.params, "*************************************");
   User.deleteuser(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -59,8 +58,6 @@ exports.updateUser = (req, res) => {
       message: "Content can not be empty!",
     });
   }
-
-  console.log(req.body);
 
   User.updateuser(req.params.id, new User(req.body), (err, data) => {
     if (err) {

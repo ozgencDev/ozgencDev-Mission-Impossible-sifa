@@ -27,17 +27,28 @@ exports.login = async (req, res) => {
   const { username, password } = req.body;
 
   User.login(username, (err, data) => {
-    console.log(data, "******************");
+    console.log("1. kısım", data);
+
     const salt = data.salt; //sql squry salt
+    console.log("2. kısım");
     const hashedPassword = data.password; //sql query hashPassword
     const newGenHashPassword = hashPassword(password, salt); //new hash and salt with user password
-
     if (username === data.username && hashedPassword === newGenHashPassword) {
       //compare newGenHashPassword with hashedPassword in database
       const secret = fs.readFileSync(__dirname + "/Keys/Private.key");
-
-      const accessToken = jwt.sign({ UID: data.id }, secret, {
-        expiresIn: "1d",
+      const refreshSecret = fs.readFileSync(
+        __dirname + "/Keys/refreshToken.key"
+      );
+      const accessToken = jwt.sign(
+        { UID: data.id, userType: data.user_type },
+        secret,
+        {
+          expiresIn: "1d",
+          algorithm: "RS256",
+        }
+      );
+      const refreshToken = jwt.sign({ UID: data.id }, refreshSecret, {
+        expiresIn: "7d",
         algorithm: "RS256",
       });
 
@@ -50,7 +61,6 @@ exports.login = async (req, res) => {
 
       return;
     }
-    console.log("4");
     res.status(401).send("Invalid username or password");
   });
 };
