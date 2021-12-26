@@ -9,7 +9,7 @@ const {
 } = require("./controller/auth.controller.js");
 
 router.route("/login").get(html).post(login);
-router.route("/logout").post(logout);
+router.route("/logout").get(logout);
 router.route("/hello").get(hello);
 router.route("/verifyToken").get(verifyToken);
 

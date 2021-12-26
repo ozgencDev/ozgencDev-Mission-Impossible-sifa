@@ -6,7 +6,6 @@ const { sign } = require("crypto");
 const Cookies = require("cookies");
 
 const refreshTokens = [];
-var keys = ["keyboard cat"];
 exports.html = (req, res) => {
   res.send(`
     <form method="POST" >
@@ -77,6 +76,7 @@ exports.verifyToken = (req, res) => {
 
 exports.logout = (req, res) => {
   res.clearCookie("Authorization");
+  refreshTokens.splice(0, refreshTokens.length);
   res.send("Logged out");
 };
 
