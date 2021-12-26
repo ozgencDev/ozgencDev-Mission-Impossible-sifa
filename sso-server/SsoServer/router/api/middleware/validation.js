@@ -10,7 +10,6 @@ exports.isAuthorized = async (req, res, next) => {
   /*var cookies = new Cookies(req, res, { keys: keys });
   const authToken = cookies.get("Authorization", { signed: true });*/
   const refreshToken = req.app.get("refresh");
-  console.log("REFRESH>>>>" + refreshToken);
   const redirectURL = `${req.protocol}://${req.headers.host}${req.path}`; //Buraya bak redirect doğru olmazsa
   if (!refreshToken) {
     return res.redirect(
