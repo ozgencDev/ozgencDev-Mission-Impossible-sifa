@@ -40,6 +40,7 @@ exports.login = async (req, res) => {
         }
       );
       res.json(Object.assign({ accessToken }, user));
+      return;
     }
     res.status(401).send("Invalid username or password");
   });
