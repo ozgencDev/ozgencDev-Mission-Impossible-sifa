@@ -5,11 +5,12 @@ const {
   logout,
   hello,
   html,
+  verifyToken,
 } = require("./controller/auth.controller.js");
 
-router.route("/login").get(html);
-router.route("/login").post(login);
+router.route("/login").get(html).post(login);
 router.route("/logout").post(logout);
 router.route("/hello").get(hello);
+router.route("/verifyToken").get(verifyToken);
 
 module.exports = router;

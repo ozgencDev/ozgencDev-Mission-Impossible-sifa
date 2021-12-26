@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const authRoute = require("./router/auth/route");
 const apiRoute = require("./router/api/route");
+const cookieSession = require("cookie-session");
 
 const app = express();
 
@@ -17,9 +18,9 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: true, overwrite: true },
   })
 );
-
 app.use("/auth", authRoute);
 app.use("/api", apiRoute);
 

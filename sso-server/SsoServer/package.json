@@ -11,7 +11,11 @@
   "author": "Sevda Avcılar, İlker Kurtulan, Furkan Ceylan, Ali Özgenç",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
+    "cookies": "^0.8.0",
+    "document": "^0.4.7",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "hashids": "^2.2.10",
