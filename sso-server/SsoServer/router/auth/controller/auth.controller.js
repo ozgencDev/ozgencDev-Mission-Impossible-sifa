@@ -19,11 +19,13 @@ exports.login = async (req, res) => {
   User.login(username, (err, data) => {
     if (err) {
       res.status(500).send(err);
+      return;
     }
     if (data === null) {
       res.status(401).send({
         message: "Username or password is incorrect",
       });
+      return;
     }
     const salt = data.salt; //sql squry salt
     const hashedPassword = data.password; //sql query hashPassword
