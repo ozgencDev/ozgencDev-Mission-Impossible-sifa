@@ -3,6 +3,7 @@ import { sentenceCase } from "change-case";
 import { useState, useEffect } from "react";
 import plusFill from "@iconify/icons-eva/plus-fill";
 import { Link as RouterLink } from "react-router-dom";
+
 // material
 import {
   Link,
@@ -230,8 +231,23 @@ export default function User() {
   });
 
   const deleteUser = async (id) => {
-    await deleteUserById(id);
-    setUsers(users.filter((user) => user.id !== id));
+    try {
+      const { data } = await deleteUserById(id);
+      if (data.status === 200) {
+        setUsers(users.filter((user) => user.id !== id));
+      }
+    } catch (error) {
+      let response = await axios.post(
+        "http://localhost:3010/auth/verifyToken",
+        { Bearer: JSON.parse(localStorage.getItem("user")).refreshToken }
+      );
+      if (response.status === 200) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        deleteUser(id);
+      }
+    }
+    /* await deleteUserById(id);
+    setUsers(users.filter((user) => user.id !== id)); */
   };
 
   const updateUser = (id, username, name, surname, password, email) => {

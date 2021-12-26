@@ -37,13 +37,44 @@ exports.login = async (req, res) => {
         { UID: data.id, userType: data.user_type },
         secret,
         {
-          expiresIn: "1d",
+          expiresIn: "5s",
           algorithm: "RS256",
         }
       );
-      res.json(Object.assign({ accessToken }, user));
+      const refreshSecret = fs.readFileSync(
+        __dirname + "/Keys/refreshToken.key"
+      );
+      const refreshToken = jwt.sign({ ...data }, refreshSecret, {
+        algorithm: "RS256",
+      });
+
+      res.json(Object.assign({ accessToken, refreshToken }, user));
       return;
     }
     res.status(401).send("Invalid username or password");
   });
+};
+
+exports.verifyToken = (req, res) => {
+  const { Bearer } = req.body;
+
+  if (Bearer == null) {
+    return res.status(400).json({ message: "badRequest" });
+  }
+  const refreshKey = fs.readFileSync(__dirname + "/Keys/refreshPublic.key");
+  const data = jwt.verify(Bearer, refreshKey, {
+    algorithms: "RS256",
+  });
+  console.log(Object.assign(data, { refreshToken: Bearer }));
+  const secret = fs.readFileSync(__dirname + "/Keys/Private.key");
+  const accessToken = jwt.sign(
+    Object.assign(data, { refreshToken: Bearer }),
+    secret,
+    {
+      expiresIn: "5s",
+      algorithm: "RS256",
+    }
+  );
+
+  return res.status(200).json({ accessToken: accessToken });
 };

@@ -11,7 +11,7 @@ const { isAuthorized } = require("./middleware/validation.js");
 const { saltHashPassword } = require("./middleware/saltHash.js");
 const { setPermission } = require("./middleware/permission.js");
 
-router.route("/create").post(isAuthorized, saltHashPassword, createUser);
+router.route("/create").post(saltHashPassword, createUser);
 
 router.route("/delete/:id").delete(isAuthorized, deleteUser);
 
