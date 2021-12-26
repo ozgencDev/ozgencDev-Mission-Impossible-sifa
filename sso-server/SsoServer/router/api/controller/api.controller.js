@@ -1,9 +1,5 @@
 const User = require("../controller/models/userModel");
 
-exports.hello = (req, res) => {
-  res.json({ message: "Hello World" });
-};
-
 // Create and Save a new user
 exports.createUser = (req, res) => {
   // Validate request
