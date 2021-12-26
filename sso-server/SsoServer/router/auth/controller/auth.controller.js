@@ -19,11 +19,13 @@ exports.login = async (req, res) => {
   User.login(username, (err, data) => {
     if (err) {
       res.status(500).send(err);
+      return;
     }
     if (data === null) {
       res.status(401).send({
         message: "Username or password is incorrect",
       });
+      return;
     }
     const salt = data.salt; //sql squry salt
     const hashedPassword = data.password; //sql query hashPassword
@@ -35,7 +37,7 @@ exports.login = async (req, res) => {
         { UID: data.id, userType: data.user_type },
         secret,
         {
-          expiresIn: "1d",
+          expiresIn: "15s",
           algorithm: "RS256",
         }
       );

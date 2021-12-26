@@ -13,9 +13,9 @@ const { setPermission } = require("./middleware/permission.js");
 
 router.route("/create").post(isAuthorized, saltHashPassword, createUser);
 
-router.route("/delete/:id").delete(isAuthorized, setPermission, deleteUser);
+router.route("/delete/:id").delete(isAuthorized, deleteUser);
 
-router.route("/update/:id").put(isAuthorized, setPermission, updateUser);
+router.route("/update/:id").put(isAuthorized, updateUser);
 
 router.route("/users").get(isAuthorized, getListOfUsers);
 
