@@ -3,9 +3,10 @@ const url = require("url");
 const jwt = require("jsonwebtoken");
 const { signedCookies } = require("cookie-parser");
 const { sign } = require("crypto");
-const cookies = require("cookies");
+const Cookies = require("cookies");
 
 const refreshTokens = [];
+var keys = ["keyboard cat"];
 exports.html = (req, res) => {
   res.send(`
     <form method="POST" >
@@ -33,7 +34,9 @@ exports.login = (req, res) => {
       expiresIn: "15s",
       algorithm: "RS256",
     });
-    res.cookie("authorization", accessToken, {
+    /*var cookies = new Cookies(req, res, { keys: keys });
+    cookies.set("Authorization", accessToken, { signed: true, httpOnly: true });*/
+    res.cookie("Authorization", accessToken, {
       httpOnly: true,
       signed: true,
       overwrite: true,
@@ -49,10 +52,9 @@ exports.login = (req, res) => {
 
     refreshTokens.push(refreshToken);
     req.app.set("refresh", refreshToken);
-    res.redirect(redirect);
-    return;
+    return res.status(200).redirect(redirect);
   }
-  res.status(401).send("Invalid username or password");
+  return res.status(401).send("Invalid username or password");
 };
 
 exports.verifyToken = (req, res) => {
@@ -69,11 +71,12 @@ exports.verifyToken = (req, res) => {
     expiresIn: "15s",
     algorithm: "RS256",
   });
-  res.clearCookie("authorization");
+
+  return res.status(200).json({ Access: accessToken });
 };
 
 exports.logout = (req, res) => {
-  res.clearCookie("authorization");
+  res.clearCookie("Authorization");
   res.send("Logged out");
 };
 
