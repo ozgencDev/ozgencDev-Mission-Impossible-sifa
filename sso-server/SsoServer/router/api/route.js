@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const {
-  hello,
   deleteUser,
   updateUser,
   getListOfUsers,
@@ -11,8 +10,6 @@ const {
 const { isAuthorized } = require("./middleware/validation.js");
 const { saltHashPassword } = require("./middleware/saltHash.js");
 const { setPermission } = require("./middleware/permission.js");
-
-router.route("/hello").get(hello);
 
 router.route("/create").post(isAuthorized, saltHashPassword, createUser);
 

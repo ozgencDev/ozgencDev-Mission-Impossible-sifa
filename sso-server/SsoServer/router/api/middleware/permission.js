@@ -1,10 +1,8 @@
 exports.setPermission = (req, res, next) => {
   const { userType, userID } = req.session;
-  console.log(userType, userID, req.params.id);
   if (userType === "admin") {
     next();
   } else if (userType == "user") {
-    console.log("burada");
     if (req.params.id == userID) {
       next();
     } else {
