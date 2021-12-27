@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import homeFill from "@iconify/icons-eva/home-fill";
 import personFill from "@iconify/icons-eva/person-fill";
 import settings2Fill from "@iconify/icons-eva/settings-2-fill";
@@ -29,7 +30,7 @@ const MENU_OPTIONS = [
     linkTo: "/",
   },
   {
-    label: "Users List",
+    label: "User List",
     icon: personFill,
     linkTo: "#",
   },
@@ -40,6 +41,14 @@ const MENU_OPTIONS = [
 export default function AccountPopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [userName, setUserName] = useState();
+  const [email, setEmail] = useState();
+
+  useEffect(() => {
+    let user = JSON.parse(localStorage.getItem('user'));
+    setUserName(user.name+' '+user.surname);
+    setEmail(user.email);
+  }, [userName, email]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -47,6 +56,13 @@ export default function AccountPopover() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate('/login');
+  }
 
   return (
     <>
@@ -81,45 +97,21 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {account.displayName}
+            {userName}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {account.email}
+            {email}
           </Typography>
         </Box>
 
         <Divider sx={{ my: 1 }} />
-
-        {MENU_OPTIONS.map((option) => (
-          <MenuItem
-            key={option.label}
-            to={option.linkTo}
-            component={RouterLink}
-            onClick={handleClose}
-            sx={{ typography: "body2", py: 1, px: 2.5 }}
-          >
-            <Box
-              component={Icon}
-              icon={option.icon}
-              sx={{
-                mr: 2,
-                width: 24,
-                height: 24,
-              }}
-            />
-
-            {option.label}
-          </MenuItem>
-        ))}
 
         <Box sx={{ p: 2, pt: 1.5 }}>
           <Button
             fullWidth
             color="inherit"
             variant="outlined"
-            onClick={() => {
-              localStorage.removeItem("user");
-            }}
+            onClick={() => {logout()}}
           >
             Logout
           </Button>

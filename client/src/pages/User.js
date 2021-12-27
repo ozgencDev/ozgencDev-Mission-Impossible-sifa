@@ -330,7 +330,7 @@ export default function User() {
                     render={({ field }) => (
                       <TextField
                         fullWidth
-                        autoComplete="username"
+                        autoComplete="email"
                         type="email"
                         label="Email address"
                         {...getFieldProps("email")}
@@ -450,7 +450,7 @@ export default function User() {
                           </TableCell>
                           <TableCell align="left">{user.email}</TableCell>
                           <TableCell align="left">
-                            {user.user_type === "admin" ? "Admin" : "User"}
+                            {user.user_type === "admin" ? "admin" : "user"}
                           </TableCell>
                           <TableCell align="right">
                             <UserMoreMenu

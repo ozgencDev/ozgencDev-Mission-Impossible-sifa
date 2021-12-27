@@ -27,7 +27,7 @@ export default function LoginForm() {
   const [error, setError] = useState(false);
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().required("Email is required"),
+    email: Yup.string().required("Username is required"),
     password: Yup.string().required("Password is required"),
   });
 
@@ -76,7 +76,7 @@ export default function LoginForm() {
             render={({ field }) => (
               <TextField
                 fullWidth
-                label="Email address"
+                label="Username"
                 error={Boolean(touched.email && errors.email)}
                 helperText={touched.email && errors.email}
                 {...field}

@@ -13,15 +13,18 @@ import NotFound from './pages/Page404';
 
 // ----------------------------------------------------------------------
 
+
 export default function Router() {
+  let user = JSON.parse(localStorage.getItem('user'));
+
   return useRoutes([
     {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" replace /> },
-        { path: 'app', element: <DashboardApp /> },
-        { path: 'user', element: <User /> },
+        { path: 'app', element: user ? <DashboardApp /> : <Navigate to="/login" />},
+        { path: 'user', element: user && user.user_type === "admin" ? <User /> : <Navigate to="/dashboard/app" /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }
       ]
@@ -30,8 +33,8 @@ export default function Router() {
       path: '/',
       element: <LogoOnlyLayout />,
       children: [
-        { path: 'login', element: <Login /> },
-        { path: 'register', element: <Register /> },
+        { path: "login", element: <Login />},
+        { path: 'register', element: <Register />},
         { path: '404', element: <NotFound /> },
         { path: '/', element: <Navigate to="/dashboard" /> },
         { path: '*', element: <Navigate to="/404" /> }

@@ -52,6 +52,11 @@ NavItem.propTypes = {
 function NavItem({ item, active }) {
   const theme = useTheme();
   const isActiveRoot = active(item.path);
+  const isAdmin = () => {
+  let user = JSON.parse(localStorage.getItem('user'));
+  if(user && user.user_type === 'admin') return true;
+  else return false;
+  };
   const { title, path, icon, info, children } = item;
   const [open, setOpen] = useState(isActiveRoot);
 
@@ -76,6 +81,7 @@ function NavItem({ item, active }) {
       <>
         <ListItemStyle
           onClick={handleOpen}
+          style={isAdmin ? {opacity: 0} : {opacity: 1 }}
           sx={{
             ...(isActiveRoot && activeRootStyle)
           }}

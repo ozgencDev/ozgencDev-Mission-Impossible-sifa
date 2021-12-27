@@ -62,14 +62,13 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
       };
       updateUserById(user.id, newUser)
         .then(function (response) {
-          console.log(response);
-          console.log(user.id);
           if (response.status === 200) {
             updateUser(
               user.id,
               values.username,
               values.firstname,
               values.lastname,
+              user.password,
               values.email
             );
             handleClose();
