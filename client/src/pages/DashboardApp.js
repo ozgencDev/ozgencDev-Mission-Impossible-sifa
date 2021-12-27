@@ -17,6 +17,8 @@ import {
   AppConversionRates
 } from '../components/_dashboard/app';
 
+const user = JSON.parse(localStorage.getItem('user'));
+
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
@@ -24,7 +26,7 @@ export default function DashboardApp() {
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
-          <Typography variant="h4">Hi, Welcome</Typography>
+          <Typography variant="h4">Hi, Welcome {user.name+" "+user.surname}</Typography>
         </Box>
       </Container>
     </Page>

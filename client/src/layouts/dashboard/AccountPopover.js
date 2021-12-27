@@ -35,6 +35,7 @@ const MENU_OPTIONS = [
   },
 ];
 
+const user = JSON.parse(localStorage.getItem('user'));
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
@@ -81,10 +82,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {account.displayName}
+            {user.name+" "+user.surname}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {account.email}
+            {user.email}
           </Typography>
         </Box>
 
