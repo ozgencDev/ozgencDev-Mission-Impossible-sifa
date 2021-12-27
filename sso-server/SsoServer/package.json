@@ -4,7 +4,7 @@
   "description": "SSO for Alotech",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -17,11 +17,13 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "hashids": "^2.2.10",
+    "jest": "^27.4.5",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "supertest": "^6.1.6",
     "uuid": "^8.3.2",
     "winston": "^3.3.3",
     "winston-mysql": "^1.1.1"

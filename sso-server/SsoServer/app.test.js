@@ -14,7 +14,7 @@ describe("Given username", () => {
       username: "sevda12",
       password: "1234567",
     });
-    expect(response.statusCode).toBe(401);
+    expect(response.statusCode).toBe(404);
   });
 });
 

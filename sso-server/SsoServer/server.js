@@ -29,3 +29,5 @@ app.use("/api", apiRoute);
 app.listen(3010, () => {
   console.log("Server is running on port 3010 -- Server");
 });
+
+module.exports = app;
