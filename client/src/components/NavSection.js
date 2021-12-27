@@ -53,7 +53,7 @@ function NavItem({ item, active }) {
   const theme = useTheme();
   const isActiveRoot = active(item.path);
   const isAdmin = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  let user = JSON.parse(localStorage.getItem('user'));
   if(user && user.user_type === 'admin') return true;
   else return false;
   };

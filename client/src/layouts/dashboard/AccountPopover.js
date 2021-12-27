@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import homeFill from "@iconify/icons-eva/home-fill";
 import personFill from "@iconify/icons-eva/person-fill";
@@ -36,12 +36,19 @@ const MENU_OPTIONS = [
   },
 ];
 
-const user = JSON.parse(localStorage.getItem('user'));
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [userName, setUserName] = useState();
+  const [email, setEmail] = useState();
+
+  useEffect(() => {
+    let user = JSON.parse(localStorage.getItem('user'));
+    setUserName(user.name+' '+user.surname);
+    setEmail(user.email);
+  }, [userName, email]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -90,10 +97,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {user && user.name+" "+user.surname}
+            {userName}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {user && user.email}
+            {email}
           </Typography>
         </Box>
 
