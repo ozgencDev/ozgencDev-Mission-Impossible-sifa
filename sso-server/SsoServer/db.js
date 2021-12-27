@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const db_config = require("../SsoServer/Utils/dbConfig");
+const { db_config } = require("./Utils/dbConfig");
 
 var connection = mysql.createPool(db_config, function (err) {
   if (err) {
