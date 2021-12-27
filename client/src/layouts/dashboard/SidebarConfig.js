@@ -14,7 +14,7 @@ const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
 const user = JSON.parse(localStorage.getItem('user'));
 
 const isAdmin = (name) => {
-  if (user && user.role === 'Admin') {
+  if (user && user.user_type === 'admin') {
     return name;
   }
   return '';

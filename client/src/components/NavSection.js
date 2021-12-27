@@ -54,7 +54,7 @@ function NavItem({ item, active }) {
   const isActiveRoot = active(item.path);
   const isAdmin = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  if(user && user.role === 'Admin') return true;
+  if(user && user.user_type === 'admin') return true;
   else return false;
   };
   const { title, path, icon, info, children } = item;

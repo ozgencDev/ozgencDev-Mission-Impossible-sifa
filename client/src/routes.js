@@ -23,7 +23,7 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/app" replace /> },
         { path: 'app', element: user ? <DashboardApp /> : <Navigate to="/login" />},
-        { path: 'user', element: user && user.role === "Admin" ? <User /> : <Navigate to="/dashboard/app" /> },
+        { path: 'user', element: user && user.user_type === "admin" ? <User /> : <Navigate to="/dashboard/app" /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }
       ]
