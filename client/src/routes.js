@@ -22,7 +22,7 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" replace /> },
-        { path: 'app', element: <DashboardApp /> },
+        { path: 'app', element: user ? <DashboardApp /> : <Navigate to="/login" />},
         { path: 'user', element: user && user.role === "Admin" ? <User /> : <Navigate to="/dashboard/app" /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }
@@ -32,8 +32,8 @@ export default function Router() {
       path: '/',
       element: <LogoOnlyLayout />,
       children: [
-        { path: "login", element: user ? <Navigate to="/dashboard/app" /> : <Login />},
-        { path: 'register', element: user ? <Navigate to="/dashboard/app" /> : <Register /> },
+        { path: "login", element: <Login />},
+        { path: 'register', element: <Register />},
         { path: '404', element: <NotFound /> },
         { path: '/', element: <Navigate to="/dashboard" /> },
         { path: '*', element: <Navigate to="/404" /> }

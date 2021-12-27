@@ -26,7 +26,7 @@ export default function DashboardApp() {
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
-          <Typography variant="h4">Hi, Welcome {user.name+" "+user.surname}</Typography>
+          <Typography variant="h4">Hi, Welcome {user && user.name+" "+user.surname}</Typography>
         </Box>
       </Container>
     </Page>

@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import homeFill from "@iconify/icons-eva/home-fill";
 import personFill from "@iconify/icons-eva/person-fill";
 import settings2Fill from "@iconify/icons-eva/settings-2-fill";
@@ -49,6 +50,13 @@ export default function AccountPopover() {
     setOpen(false);
   };
 
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate('/login');
+  }
+
   return (
     <>
       <IconButton
@@ -82,10 +90,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {user.name+" "+user.surname}
+            {user && user.name+" "+user.surname}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {user.email}
+            {user && user.email}
           </Typography>
         </Box>
 
@@ -96,9 +104,7 @@ export default function AccountPopover() {
             fullWidth
             color="inherit"
             variant="outlined"
-            onClick={() => {
-              localStorage.removeItem("user");
-            }}
+            onClick={() => {logout()}}
           >
             Logout
           </Button>
