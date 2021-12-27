@@ -46,7 +46,7 @@ User.createuser = (req, result) => {
       //   throw 'Username "' + req.body.username + '" is already taken';
       // }
 
-      console.log("created User: ", { id: res.insertId, ...req });
+      //console.log("created User: ", { id: res.insertId, ...req });
       result(null, { id: res.insertId, ...req });
     }
   );
