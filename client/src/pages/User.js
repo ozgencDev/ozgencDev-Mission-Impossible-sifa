@@ -330,7 +330,7 @@ export default function User() {
                     render={({ field }) => (
                       <TextField
                         fullWidth
-                        autoComplete="username"
+                        autoComplete="email"
                         type="email"
                         label="Email address"
                         {...getFieldProps("email")}
