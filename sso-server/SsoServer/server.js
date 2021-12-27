@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const authRoute = require("./router/auth/route");
 const apiRoute = require("./router/api/route");
+const logger = require("../SsoServer/Utils/logger");
 const cors = require("cors");
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-
+//app.use(logger);
 app.use("/auth", authRoute);
 app.use("/api", apiRoute);
 
