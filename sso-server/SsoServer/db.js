@@ -1,15 +1,18 @@
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  port: 3306,
-  database: "users",
-});
+var db_config = {
+  host: "us-cdbr-east-05.cleardb.net",
+  user: "b17bff729dbf7d",
+  password: "38e7b9f6",
+  database: "heroku_bc3792dceec74c1",
+};
 
-connection.connect((error) => {
-  if (error) throw error;
-  console.log("Successfully connected to the database.");
+var connection = mysql.createPool(db_config, function (err) {
+  if (err) {
+    console.log("Error connecting to Db");
+    return;
+  }
+  console.log("Connection established");
 });
 
 module.exports = connection;

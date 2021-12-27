@@ -37,7 +37,7 @@ exports.login = async (req, res) => {
         { UID: data.id, userType: data.user_type },
         secret,
         {
-          expiresIn: "15s",
+          expiresIn: "1d",
           algorithm: "RS256",
         }
       );
