@@ -11,6 +11,16 @@ import alertTriangleFill from '@iconify/icons-eva/alert-triangle-fill';
 
 const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
 
+const user = JSON.parse(localStorage.getItem('user'));
+
+const isAdmin = (name) => {
+  if (user.role === 'Admin') {
+    return name;
+  }
+  return '';
+}
+
+
 const sidebarConfig = [
   {
     title: 'dashboard',
@@ -18,9 +28,9 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill)
   },
   {
-    title: 'users List',
-    path: '/dashboard/user',
-    icon: getIcon(peopleFill)
+    title: isAdmin('User List'),
+    path:  isAdmin('/dashboard/user'),
+    icon: isAdmin(getIcon(peopleFill))
   },
 ];
 
