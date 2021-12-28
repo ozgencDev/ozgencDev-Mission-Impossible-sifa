@@ -4,7 +4,7 @@ const request = require("supertest");
 describe("Given username", () => {
   test("If the user is correct", async () => {
     const response = await request(app).post("/auth/login").send({
-      username: "sevda12",
+      username: "sevda123",
       password: "123456",
     });
     expect(response.statusCode).toBe(200);
