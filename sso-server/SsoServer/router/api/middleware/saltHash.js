@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 
+/* create random salt string */
 const genSaltString = function (length) {
   return crypto
     .randomBytes(Math.ceil(length / 2))
@@ -7,6 +8,7 @@ const genSaltString = function (length) {
     .slice(0, length); /** return required number of characters */
 };
 
+/* hash password */
 const sha512 = function (password, salt) {
   let hash = crypto.createHmac("sha512", salt); /** Hashing algorithm sha512 */
   hash.update(password);
@@ -14,6 +16,7 @@ const sha512 = function (password, salt) {
   return value;
 };
 
+/* hash middleware */
 const saltHashPassword = (req, res, next) => {
   const userpassword = req.body.password;
   var salt = genSaltString(16);
