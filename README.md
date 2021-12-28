@@ -4,7 +4,11 @@ This is a graduation project from Alotech Bootcamp.
 
 # TABLE OF CONTENT
 
--[Introduction](#introduction) -[Technologies](#technologies) -[Features](#features) -[Build Process](#build-process) -[Contributors](#contributors)
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Build Process](#build-process)
+- [Contributors](#contributors)
 
 # Introduction
 
