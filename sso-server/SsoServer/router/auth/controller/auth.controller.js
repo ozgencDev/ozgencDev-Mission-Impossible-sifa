@@ -27,7 +27,7 @@ exports.login = async (req, res) => {
           { UID: data.id, userType: data.user_type },
           secret,
           {
-            expiresIn: "5s",
+            expiresIn: "15s",
             algorithm: "RS256",
           }
         );
@@ -54,7 +54,6 @@ exports.login = async (req, res) => {
 
 exports.refresh = async (req, res) => {
   const { refreshToken } = req.body;
-  console.log(refreshToken, typeof refreshToken, "***************************");
   const refreshSecret = fs.readFileSync(
     __dirname + "/Keys/refreshTokenPublic.key"
   );
@@ -65,14 +64,13 @@ exports.refresh = async (req, res) => {
       { UID: payload.UID, userType: payload.userType },
       secret,
       {
-        expiresIn: "5s",
+        expiresIn: "15m",
         algorithm: "RS256",
       }
     );
-    console.log("2asdasdasdasd001");
+
     res.status(200).json({ accessToken });
   } catch (e) {
-    console.log("30000000000000000000000001");
     res.status(301).send("Invalid refresh token");
     return;
   }
