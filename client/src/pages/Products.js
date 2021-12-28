@@ -31,8 +31,6 @@ export default function EcommerceShop() {
     }
   });
 
-  const { resetForm, handleSubmit } = formik;
-
   const handleOpenFilter = () => {
     setOpenFilter(true);
   };

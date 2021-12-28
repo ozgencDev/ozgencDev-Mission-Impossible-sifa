@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { Stack, TextField, IconButton, InputAdornment } from "@mui/material";
 import { createUser } from "../../../services/user.service";
 import { LoadingButton } from "@mui/lab";
-import axios from "axios";
 
 // ----------------------------------------------------------------------
 

@@ -9,11 +9,9 @@ import eyeOffFill from "@iconify/icons-eva/eye-off-fill";
 import {
   Link,
   Stack,
-  Checkbox,
   TextField,
   IconButton,
   InputAdornment,
-  FormControlLabel,
   Alert,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
@@ -60,8 +58,7 @@ export default function LoginForm() {
     },
   });
 
-  const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } =
-    formik;
+  const { errors, touched, handleSubmit} = formik;
 
   const handleShowPassword = () => {
     setShowPassword((show) => !show);

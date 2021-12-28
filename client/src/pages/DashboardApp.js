@@ -1,5 +1,5 @@
 // material
-import { Box, Grid, Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 // components
 import Page from '../components/Page';
 import {useState, useEffect} from 'react';

@@ -8,9 +8,6 @@ import AuthLayout from '../layouts/AuthLayout';
 import Page from '../components/Page';
 import { MHidden } from '../components/@material-extend';
 import { LoginForm } from '../components/authentication/login';
-import AuthSocial from '../components/authentication/AuthSocial';
-
-// ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {

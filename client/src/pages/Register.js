@@ -8,9 +8,6 @@ import AuthLayout from '../layouts/AuthLayout';
 import Page from '../components/Page';
 import { MHidden } from '../components/@material-extend';
 import { RegisterForm } from '../components/authentication/register';
-import AuthSocial from '../components/authentication/AuthSocial';
-
-// ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
@@ -69,21 +66,7 @@ export default function Register() {
             </Typography>
           </Box>
 
-          <AuthSocial />
-
           <RegisterForm />
-
-          <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
-            By registering, I agree to Minimal&nbsp;
-            <Link underline="always" sx={{ color: 'text.primary' }}>
-              Terms of Service
-            </Link>
-            &nbsp;and&nbsp;
-            <Link underline="always" sx={{ color: 'text.primary' }}>
-              Privacy Policy
-            </Link>
-            .
-          </Typography>
 
           <MHidden width="smUp">
             <Typography variant="subtitle2" sx={{ mt: 3, textAlign: 'center' }}>
