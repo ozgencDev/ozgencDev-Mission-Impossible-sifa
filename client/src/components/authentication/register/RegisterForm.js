@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { Stack, TextField, IconButton, InputAdornment } from "@mui/material";
 import { createUser } from "../../../services/user.service";
 import { LoadingButton } from "@mui/lab";
-
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 // ----------------------------------------------------------------------
 
+toast.configure();
 export default function RegisterForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -56,8 +58,11 @@ export default function RegisterForm() {
           console.log(response);
           if (response.status === 200) {
             navigate("/dashboard", { replace: true });
+            toast.success(`${user.user_name} just registered`, {position: toast.POSITION.TOP_CENTER});
           }
-        })
+        }
+        
+        )
         .catch(function (error) {
           console.log(error);
         });

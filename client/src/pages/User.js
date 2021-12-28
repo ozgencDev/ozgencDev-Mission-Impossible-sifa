@@ -38,6 +38,8 @@ import {
   createUser,
   deleteUserById,
 } from "../services/user.service.js";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 //
 
 // ----------------------------------------------------------------------
@@ -96,6 +98,10 @@ export default function User() {
     password: Yup.string().required("Password is required"),
   });
 
+  const createPopup = (user) => {
+    toast.success(`${user} just added`, {position: toast.POSITION.TOP_CENTER});
+  }
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -124,6 +130,7 @@ export default function User() {
             values.email = "";
             values.username = "";
             values.password = "";
+            createPopup(user.user_name);
           }
         })
         .catch(function (error) {

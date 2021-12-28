@@ -17,7 +17,10 @@ import * as Yup from "yup";
 import { LoadingButton } from "@mui/lab";
 import { useFormik, Form, FormikProvider, Field } from "formik";
 import { updateUserById } from "../../../services/user.service";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure()
 export default function UserMoreMenu({ user, deleteUser, updateUser }) {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +75,9 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
             values.lastname = user.user_surname;
             values.email = user.email;
             values.username = user.username;
+
           }
+          updatePopup(user.user_name);
         })
         .catch(function (error) {
           console.log(error);
@@ -95,6 +100,14 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
 
   const { errors, touched, handleSubmit, isSubmitting, getFieldProps } = formik;
 
+  const deletePopup = (user) => {
+    toast.warning(`${user} just deleted`, {position: toast.POSITION.TOP_CENTER});
+  }
+
+  const updatePopup = (user) => {
+    toast.success(`${user} just updated`, {position: toast.POSITION.TOP_CENTER});
+  }
+
   return (
     <>
       <IconButton ref={ref} onClick={() => setIsOpen(true)}>
@@ -113,7 +126,10 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
       >
         <MenuItem
           sx={{ color: "text.secondary" }}
-          onClick={() => deleteUser(user.id)}
+          onClick={() => {
+            deleteUser(user.id);
+            deletePopup(user.user_name);
+          }}
         >
           <ListItemIcon>
             <Icon icon={trash2Outline} width={24} height={24} />
