@@ -2,77 +2,13 @@
 
 This is a graduation project from Alotech Bootcamp.
 
-## TABLE OF CONTENT
+# TABLE OF CONTENT
 
-### Place 1
+-[Introduction](#introduction) -[Technologies](#technologies) -[Features](#features) -[Build Process](#build-process) -[Contributors](#contributors)
 
-Hello, this is some text to fill in this, [here](#place-2), is a link to the second place.
+# Introduction
 
-hfgh
-hgfhgf
-hgf
-hgfh
-gf
-hfg
-hf
-h
-gfh
-fgh
-fg
-hfg
-h
-gfh
-gfh
-gf
-hgfh
-fg
-h
-fgh
-fg
-h
-fh
-fg
-h
-gfj
-jh
-gj
-hg
-jf
-h
-gf
+This project is a Single Sign-on based web app. Users,tokens etc. are not stored in main app. We fetch the data from another app and obtain the data we can access to. The important values are not being shared with the main app.
 
-### Place 2
-
-Place one has the fun times of linking here, but I can also link back [here](#place-1).
-hgf
-hgf
-hgf
-hgf
-hgf
-h
-gdh
-d
-hd
-gh
-d
-gh
-dh
-d
-h
-d
-fh
-
-h
-dfh
-fd
-h
-fd
-hfd
-h
-fd
-hdf
-h
-
-### Place's 3: other example
-
-Place one has the fun times of linking here, but I can also link back [here](#places-3-other-example).
+- Main App Login Page
+  ![This is an image](https://www.hizliresim.com/5fn7ihx)
