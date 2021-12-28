@@ -58,7 +58,7 @@ export default function RegisterForm() {
           console.log(response);
           if (response.status === 200) {
             navigate("/dashboard", { replace: true });
-            toast.success(`${user.user_name} just registered`, {position: toast.POSITION.TOP_CENTER});
+            toast.success(`${user.user_name} just registered`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true});
           }
         }
         

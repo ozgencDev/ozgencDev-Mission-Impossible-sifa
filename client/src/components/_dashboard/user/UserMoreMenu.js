@@ -101,11 +101,11 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
   const { errors, touched, handleSubmit, isSubmitting, getFieldProps } = formik;
 
   const deletePopup = (user) => {
-    toast.warning(`${user} just deleted`, {position: toast.POSITION.TOP_CENTER});
+    toast.warning(`${user} just deleted`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true});
   }
 
   const updatePopup = (user) => {
-    toast.success(`${user} just updated`, {position: toast.POSITION.TOP_CENTER});
+    toast.success(`${user} just updated`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true});
   }
 
   return (
