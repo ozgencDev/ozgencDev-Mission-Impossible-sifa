@@ -66,3 +66,17 @@ For Code Editor:
   npm install
   npm start
   ```
+- For Server:
+  ```
+  cd sso-server
+  cd SsoServer
+  npm install
+  npm start
+  ```
+
+# Contributors
+
+- [Sevda Avcılar](https://github.com/sevdavc)
+- [Ali Özgenç](https://github.com/ozgencDev)
+- [İlker Kurtulan](https://github.com/ilkerkurtulan97)
+- [Furkan Ceylan](https://github.com/furkan-ceylan)
