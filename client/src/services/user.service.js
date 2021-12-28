@@ -1,30 +1,74 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:3010/api/";
+const API_URL = "http://localhost:3010";
+const api = "/api/";
+
+const client = axios.create({
+  baseURL: API_URL,
+  headers: authHeader(),
+});
+
+const refTokCli = axios.create({
+  baseURL: API_URL,
+  headers: authHeader(),
+});
+
+client.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response.status === 401) {
+      const user = localStorage.getItem("user");
+      console.log(JSON.parse(user).refreshToken);
+      if (user) {
+        return refTokCli
+          .post("/auth/refresh", {
+            refreshToken: JSON.parse(user).refreshToken,
+          })
+          .then((response) => {
+            const { accessToken } = response.data;
+            console.log(
+              Object.assign(JSON.parse(user), { accessToken }).toString()
+            );
+            localStorage.setItem(
+              "user",
+              JSON.stringify(Object.assign(JSON.parse(user), { accessToken }))
+            );
+            client.defaults.headers.common["x-access-token"] = `${accessToken}`;
+            return;
+          }); //vvvvv sıkıntı olabilir catch
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 const getPublicContent = () => {
-  return axios.get(API_URL + "all");
+  return client.get(API_URL + api + "all"); //buraya varırken 401 alıyoruz api validation kısmında
 };
 
 const getUserBoard = () => {
-  return axios.get(API_URL + "users", { headers: authHeader() });
+  return client.get(API_URL + api + "users", { headers: authHeader() });
 };
 
 const createUser = (user) => {
-  return axios.post(API_URL + "create", user, { headers: authHeader() });
+  return client.post(API_URL + api + "create", user, { headers: authHeader() });
 };
 
 const updateUserById = (id, user) => {
-  return axios.put(API_URL + "update/" + id, user, { headers: authHeader() });
+  return client.put(API_URL + api + "update/" + id, user, {
+    headers: authHeader(),
+  });
 };
 
 const deleteUserById = (id) => {
-  return axios.delete(API_URL + "delete/" + id, { headers: authHeader() });
+  return client.delete(API_URL + api + "delete/" + id, {
+    headers: authHeader(),
+  });
 };
 
 const getAdminBoard = () => {
-  return axios.get(API_URL + "admin", { headers: authHeader() });
+  return client.get(API_URL + api + "admin", { headers: authHeader() });
 };
 
 export {

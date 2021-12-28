@@ -59,7 +59,9 @@ export default function User() {
   useEffect(() => {
     const getUsers = async () => {
       const { data } = await getUserBoard();
-      setUsers(data);
+      if (data) {
+        setUsers(data);
+      }
     };
     getUsers();
   }, []);
@@ -310,16 +312,12 @@ export default function User() {
         </Stack>
 
         <Card>
-          <UserListToolbar
-          />
+          <UserListToolbar />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
-                <UserListHead
-                  headLabel={TABLE_HEAD}
-                  rowCount={4}
-                />
+                <UserListHead headLabel={TABLE_HEAD} rowCount={4} />
 
                 <TableBody>
                   {users &&
@@ -368,7 +366,6 @@ export default function User() {
               </Table>
             </TableContainer>
           </Scrollbar>
-
         </Card>
       </Container>
     </Page>
