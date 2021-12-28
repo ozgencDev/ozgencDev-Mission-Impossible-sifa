@@ -8,6 +8,15 @@ exports.createUser = (req, res) => {
       message: "Content can not be empty!",
     });
   }
+
+  for (const key in req.body) {
+    if (req.body[key] === "") {
+      res.status(400).send({
+        message: `${key} can not be empty!`,
+      });
+    }
+  }
+
   // Create a User
   const user = new User({
     username: req.body.username,
