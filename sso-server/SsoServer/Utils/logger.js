@@ -1,7 +1,7 @@
 const winston = require("winston");
 require("winston-mongodb");
 const expreWinston = require("express-winston");
-const { logger_mongodb } = require("./dbConfig");
+const { logger_mongodb } = require("./dbconfig");
 /* logger middleware config and transports logs to mongodb database */
 var logger = new winston.createLogger({
   format: winston.format.combine(

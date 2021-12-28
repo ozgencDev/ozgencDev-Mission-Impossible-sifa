@@ -1,4 +1,5 @@
-const User = require("../controller/models/userModel");
+const User = require("../controller/models/usermodel");
+const emailValid = require("email-validator");
 
 // Create and Save a new user
 exports.createUser = (req, res) => {
@@ -9,6 +10,13 @@ exports.createUser = (req, res) => {
     });
   }
 
+  if (!(req.body.email == undefined)) {
+    if (!emailValid.validate(req.body.email)) {
+      res.status(400).send({
+        message: "Email is invalid",
+      });
+    }
+  }
   for (const key in req.body) {
     if (req.body[key] === "") {
       res.status(400).send({

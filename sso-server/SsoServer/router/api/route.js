@@ -8,7 +8,7 @@ const {
   createUser,
 } = require("./controller/api.controller.js");
 const { isAuthorized } = require("./middleware/validation.js");
-const { saltHashPassword } = require("./middleware/saltHash.js");
+const { saltHashPassword } = require("./middleware/salthash.js");
 
 router.route("/create").post(saltHashPassword, createUser);
 

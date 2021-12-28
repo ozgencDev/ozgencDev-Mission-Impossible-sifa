@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-const User = require("../controller/models/userModel");
+const User = require("../controller/models/usermodel");
 
 /* check if token is exist and verify */
 exports.isAuthorized = async (req, res, next) => {
