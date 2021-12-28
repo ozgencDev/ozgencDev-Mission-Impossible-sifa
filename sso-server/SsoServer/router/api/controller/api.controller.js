@@ -108,22 +108,3 @@ exports.getUserInfo = (req, res) => {
     } else res.send(data);
   });
 };
-
-/* exports.login = (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-
-  User.login(username, password, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found User.`,
-        });
-      } else {
-        res.status(500).send({
-          message: "Error retrieving User ",
-        });
-      }
-    } else res.send(data);
-  });
-}; */

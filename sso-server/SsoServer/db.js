@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const { db_config } = require("./Utils/dbConfig");
 
+/* cloud data base connection */
 var connection = mysql.createPool(db_config, function (err) {
   if (err) {
     console.log("Error connecting to Db");

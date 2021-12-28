@@ -9,7 +9,6 @@ const {
 } = require("./controller/api.controller.js");
 const { isAuthorized } = require("./middleware/validation.js");
 const { saltHashPassword } = require("./middleware/saltHash.js");
-const { setPermission } = require("./middleware/permission.js");
 
 router.route("/create").post(saltHashPassword, createUser);
 

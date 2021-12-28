@@ -4,18 +4,15 @@ const User = require("../controller/models/userModel");
 
 exports.isAuthorized = async (req, res, next) => {
   const authToken = req.headers["x-access-token"];
-  const redirectURL = `${req.protocol}://${req.headers.host}${req._parsedOriginalUrl.path}`; //Buraya bak redirect doğru olmazsa
+
   if (!authToken) {
-    return res.redirect(
-      `http://localhost:3010/auth/login?serviceURL=${redirectURL}`
-    );
+    res.status(401).send({
+      message: "Access denied. No token provided.",
+    });
+    return;
   }
   try {
-    const payload = jwt.verify(
-      authToken, //apiye yapılan istek içinde bilgide taşıyor
-      fs.readFileSync(__dirname + "/Keys/Public.key")
-    );
-    const { userType, UID } = payload;
+    jwt.verify(authToken, fs.readFileSync(__dirname + "/Keys/Public.key"));
   } catch (err) {
     return res.status(401).json({
       error: true,
