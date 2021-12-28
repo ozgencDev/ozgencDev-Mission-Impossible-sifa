@@ -15,19 +15,19 @@ This is a graduation project from Alotech Bootcamp.
 
 This project is a Single Sign-on based web app. Users,tokens etc. are not stored in main app. We fetch the data from another app and obtain the data we can access to. The important values are not being shared with the main app.
 
-- Main App Login Page
+- LOGIN PAGE
 
   ![This is an image](https://i.hizliresim.com/5fn7ihx.PNG)
 
   You can log in to your account with this page. If you dont have an account, you can create one for yourself. When you signed in, user's access token and refresh token is creating in the server side. After we reached to main page, server sends access token and refresh token to client. Access token stored in local storage and refresh token stored in database.
 
-- Main Page / Dashboard
+- MAIN PAGE
 
   ![This is an image](https://i.hizliresim.com/tkl3y9y.PNG)
 
   When we logged in, we see this page. You can access to the users table with menu on the left side.
 
-- Users Table Page
+- USERS PAGE
 
   ![This is an image](https://i.hizliresim.com/tkl3y9y.PNG)
 
