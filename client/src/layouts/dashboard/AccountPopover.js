@@ -17,14 +17,14 @@ import account from "../../_mocks_/account";
 export default function AccountPopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [userName, setUserName] = useState();
-  const [email, setEmail] = useState();
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem('user'));
-    setUserName(user.name+' '+user.surname);
-    setEmail(user.email);
-  }, [userName, email]);
+    let userLS = JSON.parse(localStorage.getItem("user"));
+    if (userLS) {
+      setUser(userLS);
+    }
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -73,10 +73,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
-            {userName}
+            {user && user.name + " " + user.surname}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {email}
+            {user && user.email}
           </Typography>
         </Box>
 
