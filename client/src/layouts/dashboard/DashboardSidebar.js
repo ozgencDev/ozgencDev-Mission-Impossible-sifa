@@ -37,31 +37,16 @@ const AccountStyle = styled("div")(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-DashboardSidebar.propTypes = {
-  isOpenSidebar: PropTypes.bool,
-  onCloseSidebar: PropTypes.func
-};
-
-export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
+export default function DashboardSidebar() {
   const { pathname } = useLocation();
-  const [userName, setUserName] = useState();
-  const [email, setEmail] = useState();
   const [user, setUser] = useState();
 
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem("user"));
-    if(user) {
-    setUserName(user.name + " " + user.surname);
-    setEmail(user.email);
-    setUser(user);
-  }
-  }, [userName, email, user]);
-
-  useEffect(() => {
-    if (isOpenSidebar) {
-      onCloseSidebar();
+    let userLS = JSON.parse(localStorage.getItem("user"));
+    if (userLS) {
+      setUser(userLS);
     }
-  }, [pathname]);
+  }, []);
 
   const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
 
@@ -91,7 +76,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             <Avatar src={account.photoURL} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
-                {userName}
+                {user && user.name + " " + user.surname}
               </Typography>
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 {account.role}
@@ -124,8 +109,6 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     <RootStyle>
       <MHidden width="lgUp">
         <Drawer
-          open={isOpenSidebar}
-          onClose={onCloseSidebar}
           PaperProps={{
             sx: { width: DRAWER_WIDTH }
           }}
