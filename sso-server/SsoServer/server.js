@@ -22,7 +22,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(reqLogger);
+//app.use(reqLogger);
 
 app.use("/auth", authRoute);
 app.use("/api", apiRoute);
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   res.status(404).send("Hello World");
 });
 
-app.use(errLogger);
+//app.use(errLogger);
 
 app.listen(3010, () => {
   console.log("Server is running on port 3010 -- Server");

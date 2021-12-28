@@ -18,23 +18,26 @@ client.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response.status === 401) {
-      const user = localStorage.getItem("user");
-      console.log(JSON.parse(user).refreshToken);
+      const user = localStorage.getItem("user"); //access çek buradan
+
       if (user) {
         return refTokCli
-          .post("/auth/refresh", {
-            refreshToken: JSON.parse(user).refreshToken,
+          .post("/auth/getrefresh", {
+            accessToken: JSON.parse(user).accessToken,
           })
           .then((response) => {
-            const { accessToken } = response.data;
-            console.log(
-              Object.assign(JSON.parse(user), { accessToken }).toString()
-            );
-            localStorage.setItem(
-              "user",
-              JSON.stringify(Object.assign(JSON.parse(user), { accessToken }))
-            );
-            client.defaults.headers.common["x-access-token"] = `${accessToken}`;
+            const { refreshToken } = response.data;
+            refTokCli
+              .post("/auth/refresh", { refreshToken: refreshToken })
+              .then((response) => {
+                console.log(response, "<<<<<<<<<<<<<<<<<<< access token here");
+                localStorage.setItem(
+                  "user",
+                  JSON.stringify(Object.assign(JSON.parse(user), { response }))
+                );
+                //client.defaults.headers.common["x-access-token"] = `${accessToken}`;
+              });
+
             return;
           }); //vvvvv sıkıntı olabilir catch
       }
