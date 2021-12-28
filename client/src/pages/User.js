@@ -99,7 +99,7 @@ export default function User() {
   });
 
   const createPopup = (user) => {
-    toast.success(`${user} just added`, {position: toast.POSITION.TOP_CENTER});
+    toast.success(`${user} just added`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true});
   }
 
   const formik = useFormik({
@@ -120,6 +120,7 @@ export default function User() {
         password: values.password,
         user_type: "User",
       };
+      setUsers([...users, user]);
       createUser(user)
         .then(function (response) {
           console.log(response);
