@@ -37,26 +37,32 @@ This project is a Single Sign-on based web app. Users,tokens etc. are not stored
 
 # Technologies
 
-Front end: ReactJS
-Back end: nodeJS
-Application Service: nginx
-Web Services: RESTFUL API
-Database: MySQL
-Log: winston
-Testing: Jest
+- Front end: ReactJS
+- Back end: nodeJS
+- Application Service: nginx
+- Web Services: RESTFUL API
+- Database: MySQL
+- Log: winston
+- Testing: Jest
 
 # Features
 
 - Admin:
-  Can see the whole users table in database
-  Create,update,delete users
+  - Can see the whole users table in database
+  - Create,update,delete users
 - Users:
-  Register and login
-  Can see the whole users table in database
+  - Register and login
+  - Can see the whole users table in database
 
 # Build Process
 
 For Docker:
 
 For Code Editor:
-` cd client npm install npm start `
+
+- For Client:
+  ```
+  cd client
+  npm install
+  npm start
+  ```
