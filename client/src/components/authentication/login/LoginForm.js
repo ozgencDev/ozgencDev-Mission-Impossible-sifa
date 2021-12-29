@@ -118,10 +118,6 @@ export default function LoginForm() {
           >
             Username or password is invalid
           </Alert>
-
-          <Link component={RouterLink} variant="subtitle2" to="#">
-            Forgot password?
-          </Link>
         </Stack>
 
         <LoadingButton fullWidth size="large" type="submit" variant="contained">

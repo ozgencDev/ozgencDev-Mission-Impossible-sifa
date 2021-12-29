@@ -21,6 +21,9 @@ export default function DashboardApp() {
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Hi, Welcome {userName}</Typography>
         </Box>
+        <Box sx={{ pb: 12 }} style={{marginLeft: 64}}>
+           <img src="/static/illustrations/1.png" alt="login" />
+        </Box>
       </Container>
     </Page>
   );
