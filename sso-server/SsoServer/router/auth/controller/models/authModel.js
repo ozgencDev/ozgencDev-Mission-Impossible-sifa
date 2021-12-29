@@ -38,21 +38,4 @@ authToken.checkTokenByUserid = (id, result) => {
   });
 };
 
-authToken.getRefreshToken = (id, result) => {
-  //axios istek atacak
-  sql.query(`SELECT token FROM tokens WHERE user_id = ${id}`, (err, res) => {
-    if (err) {
-      //console.log("error: ", err);
-      result(err, null);
-    }
-    if (res.length) {
-      console.log("found user: ", res[0]);
-      result(null, true);
-      console.log("true döndürüldü");
-    }
-
-    result({ kind: "not_found" }, null);
-  });
-};
-
 module.exports = authToken;

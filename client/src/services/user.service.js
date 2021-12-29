@@ -22,22 +22,17 @@ client.interceptors.response.use(
 
       if (user) {
         return refTokCli
-          .post("/auth/getrefresh", {
-            accessToken: JSON.parse(user).accessToken,
+          .post("/auth/refresh", {
+            refreshToken: JSON.parse(user).refreshToken,
           })
           .then((response) => {
-            const { refreshToken } = response.data;
-            refTokCli
-              .post("/auth/refresh", { refreshToken: refreshToken })
-              .then((response) => {
-                console.log(response, "<<<<<<<<<<<<<<<<<<< access token here");
-                localStorage.setItem(
-                  "user",
-                  JSON.stringify(Object.assign(JSON.parse(user), { response }))
-                );
-                //client.defaults.headers.common["x-access-token"] = `${accessToken}`;
-              });
+            const { accessToken } = response.data;
 
+            localStorage.setItem(
+              "user",
+              JSON.stringify(Object.assign(JSON.parse(user), { accessToken }))
+            );
+            client.defaults.headers.common["x-access-token"] = `${accessToken}`;
             return;
           }); //vvvvv sıkıntı olabilir catch
       }

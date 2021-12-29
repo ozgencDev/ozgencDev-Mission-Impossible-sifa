@@ -40,7 +40,7 @@ exports.login = async (req, res) => {
           { UID: data.id, userType: data.user_type },
           refreshSecret,
           {
-            expiresIn: "1d",
+            expiresIn: "7d",
             algorithm: "RS256",
           }
         );
@@ -69,21 +69,19 @@ exports.refresh = async (req, res) => {
   );
   try {
     const payload = jwt.verify(refreshToken, refreshSecret);
-    console.log(payload.UID, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ıamhere");
+
     authToken.checkTokenByUserid(payload.UID, (err, data) => {
       if (err) {
         res.status(501).send({ message: err.message || "Error" });
         return;
       } else {
-        console.log(data, "bak burayımmmmmmmmmmmm");
-
         if (data) {
           const secret = fs.readFileSync(__dirname + "/Keys/Private.key");
           const accessToken = jwt.sign(
             { UID: payload.UID, userType: payload.userType },
             secret,
             {
-              expiresIn: "10s",
+              expiresIn: "15m",
               algorithm: "RS256",
             }
           );
@@ -94,21 +92,10 @@ exports.refresh = async (req, res) => {
           res.status(501).send("Refresh is not exist");
           return;
         }
-
-        res.send(data);
-        return;
       }
     });
   } catch (e) {
     res.status(301).send("Invalid refresh token");
     return;
   }
-};
-
-exports.getrefresh = (req, res) => {
-  const { accessToken } = req.body;
-  const payload = jwt.decode(accessToken);
-  authToken.getRefreshToken(payload.UID, (err, data) => {
-    res.status(200).json({ refreshToken: data });
-  });
 };

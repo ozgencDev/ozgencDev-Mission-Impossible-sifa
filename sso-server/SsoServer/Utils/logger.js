@@ -9,12 +9,6 @@ var logger = new winston.createLogger({
     winston.format.prettyPrint()
   ),
   transports: [
-    new winston.transports.Console({
-      level: "debug",
-      handleExceptions: true,
-      json: false,
-      colorize: true,
-    }),
     //transports
     new winston.transports.MongoDB(logger_mongodb),
   ],
@@ -24,7 +18,6 @@ var logger = new winston.createLogger({
 /* request logger mw */
 const reqLogger = expreWinston.logger({
   transports: [
-    new winston.transports.Console({}),
     //transports
     new winston.transports.MongoDB(logger_mongodb),
   ],
@@ -44,7 +37,6 @@ const reqLogger = expreWinston.logger({
 /* error logger mw */
 const errLogger = expreWinston.errorLogger({
   transports: [
-    new winston.transports.Console({}),
     //transports
     new winston.transports.MongoDB(logger_mongodb),
   ],
