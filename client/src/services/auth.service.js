@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3010/auth/login";
+const API_URL = "https://mission-alot.herokuapp.com/auth/login";
 
 const register = (username, email, password) => {
   return axios.post(API_URL, {

@@ -37,7 +37,7 @@ export default function LoginForm() {
     validationSchema: LoginSchema,
     onSubmit: (values) => {
       axios
-        .post("http://localhost:3010/auth/login", {
+        .post("https://mission-alot.herokuapp.com/auth/login", {
           username: values.email,
           password: values.password,
         })
