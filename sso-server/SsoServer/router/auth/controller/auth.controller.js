@@ -46,15 +46,16 @@ exports.login = async (req, res) => {
         );
         const token = new authToken({ token: refreshToken, user_id: data.id });
         authToken.createtoken(token, (err, data) => {
-          if (err) res.status(500).send({ message: err.message || "Error" });
-          else {
-            res.send(data);
+          if (err) {
+            res.status(500).send({ message: err.message || "Error" });
+            return;
+          } else {
+            res.json(Object.assign({ accessToken, refreshToken }, user));
+            return;
           }
+          //res.status(401).send("Invalid username or password");
         });
-        res.json(Object.assign({ accessToken, refreshToken }, user));
-        return;
       }
-      res.status(401).send("Invalid username or password");
     } catch (e) {
       res.status(404).send(e);
     }
@@ -81,7 +82,7 @@ exports.refresh = async (req, res) => {
             { UID: payload.UID, userType: payload.userType },
             secret,
             {
-              expiresIn: "15m",
+              expiresIn: "10s",
               algorithm: "RS256",
             }
           );

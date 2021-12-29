@@ -58,10 +58,16 @@ export default function User() {
 
   useEffect(() => {
     const getUsers = async () => {
-      const { data } = await getUserBoard();
-      if (data) {
-        setUsers(data);
-      }
+      await getUserBoard().then(
+        function (response) {
+          console.log(response);
+          if (response.status === 200) {
+            setUsers(response.data);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });;
     };
     getUsers();
   }, []);
