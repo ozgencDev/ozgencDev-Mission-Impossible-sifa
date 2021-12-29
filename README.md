@@ -24,13 +24,13 @@ This project is a Single Sign-on based web app. Users and tokens are not stored 
 
 - MAIN PAGE
 
-  ![This is an image](https://i.hizliresim.com/tkl3y9y.PNG)
+  ![This is an image](https://i.hizliresim.com/bzehoe4.PNG)
 
   This page welcomes us when we log in. Admins can access to the users table with menu on the left side.
 
 - USERS PAGE
 
-  ![This is an image](https://i.hizliresim.com/tkl3y9y.PNG)
+  ![This is an image](https://i.hizliresim.com/hluan9t.PNG)
 
   Admins can see the whole users table on this page. Admin can make CRUD operations.
 
@@ -42,9 +42,9 @@ This project is a Single Sign-on based web app. Users and tokens are not stored 
 
 - Front end: ReactJS
 - Back end: nodeJS
-- Application Service: nginx
 - Web Services: RESTFUL API
 - Database: MySQL
+- Log Database: MongoDB
 - Log: winston
 - Testing: Jest
 

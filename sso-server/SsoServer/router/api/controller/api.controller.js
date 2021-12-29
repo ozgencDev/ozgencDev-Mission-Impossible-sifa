@@ -4,10 +4,11 @@ const emailValid = require("email-validator");
 // Create and Save a new user
 exports.createUser = (req, res) => {
   // Validate request
-  if (!req.body) {
+  if (!req.body || Object.keys(req.body).length !== 7) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
+    return;
   }
 
   if (!(req.body.email == undefined)) {
@@ -15,6 +16,7 @@ exports.createUser = (req, res) => {
       res.status(400).send({
         message: "Email is invalid",
       });
+      return;
     }
   }
   for (const key in req.body) {
@@ -22,6 +24,7 @@ exports.createUser = (req, res) => {
       res.status(400).send({
         message: `${key} can not be empty!`,
       });
+      return;
     }
   }
 

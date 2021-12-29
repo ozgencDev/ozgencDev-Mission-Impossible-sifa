@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
           { UID: data.id, userType: data.user_type },
           secret,
           {
-            expiresIn: "5s",
+            expiresIn: "15m",
             algorithm: "RS256",
           }
         );
@@ -82,14 +82,13 @@ exports.refresh = async (req, res) => {
             { UID: payload.UID, userType: payload.userType },
             secret,
             {
-              expiresIn: "10s",
+              expiresIn: "15m",
               algorithm: "RS256",
             }
           );
           res.status(200).json({ accessToken });
           return;
         } else {
-          /* Buradayızzzzzzzzzzzzzzz */
           res.status(501).send("Refresh is not exist");
           return;
         }
