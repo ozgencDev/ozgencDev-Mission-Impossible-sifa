@@ -23,13 +23,6 @@ describe("Given username", () => {
     });
     expect(response.statusCode).toBe(404);
   });
-  test("New access token generate", async () => {
-    const response = await request(app).post("/auth/login").send({
-      username: "sevda12",
-      password: "1234567",
-    });
-    expect(response.statusCode).toBe(404);
-  });
 });
 
 describe("API Routes", () => {
@@ -44,17 +37,16 @@ describe("API Routes", () => {
     });
     expect(response.statusCode).toBe(200);
   });
-  /*test("Error Creating User", async () => {
+  test("Error Creating User", async () => {
     const response = await request(app).post("/api/create").send({
       username: "Api123",
       user_name: "Api",
       user_surname: "Server",
       password: "123abcd",
-      email: "api@gmail.com",
       user_type: "User",
     });
-    expect(response.statusCode).toBe(500);
-  });*/
+    expect(response.statusCode).toBe(400);
+  });
 
   test("List of Users Authorized", async () => {
     const response = await request(app)
@@ -70,17 +62,16 @@ describe("API Routes", () => {
 
   test("User Info Authorized", async () => {
     const response = await request(app)
-      .get("/api/user/1324")
+      .get("/api/user/94")
       .set("x-access-token", userOne.token);
     expect(response.statusCode).toBe(200);
   });
 
   test("User Info UnAuthorized", async () => {
-    const response = await request(app).put("/api/user/1324");
+    const response = await request(app).put("/api/user/94");
     expect(response.statusCode).toBe(404);
   });
 
-  //Available id's:
   test("Updating User Authorized", async () => {
     const response = await request(app)
       .put("/api/update/14")
@@ -92,24 +83,20 @@ describe("API Routes", () => {
   });
 
   test("Updating User UnAuthorized", async () => {
-    const response = await request(app).put("/api/update/1144");
+    const response = await request(app).put("/api/update/14");
     expect(response.statusCode).toBe(401);
   });
 
-  /*test("Deleting User Authorized", async () => {
-    const login = await request(app).post("/auth/login").send({
-      username: "sevda123",
-      password: "123456",
-    });
-    const { accessToken } = login.body;
+  test("Deleting User Authorized", async () => {
     const response = await request(app)
-      .delete("/api/delete/1124")
-      .set("x-access-token", accessToken);
+      .delete("/api/delete/144")
+      .set("x-access-token", useOne.token);
     expect(response.statusCode).toBe(200);
-  });*/
+  });
+  14;
 
   test("Deleting User UnAuthorized", async () => {
-    const response = await request(app).delete("/api/delete/1124");
+    const response = await request(app).delete("/api/delete/144");
     expect(response.statusCode).toBe(401);
   });
 });
