@@ -32,7 +32,7 @@ client.interceptors.response.use(
               "user",
               JSON.stringify(Object.assign(JSON.parse(user), { accessToken }))
             );
-            client.defaults.headers.common["x-access-token"] = `${accessToken}`;
+            //client.defaults.headers.common["x-access-token"] = `${accessToken}`;
             return;
           }); //vvvvv sıkıntı olabilir catch
       }

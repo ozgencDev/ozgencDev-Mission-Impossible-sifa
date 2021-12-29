@@ -6,7 +6,7 @@ const authToken = function (authToken) {
 };
 authToken.createtoken = (req, result) => {
   const { token, user_id } = req;
-  console.log(token, user_id, "<<<<<<<<<<<<<<<<<<<<<<<<<wdasdwqdqdasdqwd");
+
   sql.query(
     "INSERT INTO tokens SET token = ?, user_id = ?",
     [token, user_id],
@@ -29,8 +29,8 @@ authToken.checkTokenByUserid = (id, result) => {
       result(err, null);
     }
     if (res.length) {
-      console.log("found user: ", res[0]);
       result(null, true);
+      return;
       console.log("true döndürüldü");
     }
 
