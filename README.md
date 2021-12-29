@@ -13,27 +13,29 @@ This is a graduation project from Alotech Bootcamp.
 
 # Introduction
 
-This project is a Single Sign-on based web app. Users,tokens etc. are not stored in main app. We fetch the data from another app and obtain the data we can access to. The important values are not being shared with the main app.
+This project is a Single Sign-on based web app. Users and tokens are not stored in main app. We fetch the data we can access from another application. The important values are not being shared with the main app.
 
 - LOGIN PAGE
 
   ![This is an image](https://i.hizliresim.com/5fn7ihx.PNG)
 
-  You can log in to your account with this page. If you dont have an account, you can create one for yourself. When you signed in, user's access token and refresh token is creating in the server side. After we reached to main page, server sends access token and refresh token to client. Access token stored in local storage and refresh token stored in database.
+  You can log in to your account with this page. If you don't have an account, you can create one for yourself. When you signed in, user's access token and refresh token is creating in the server side. After we reached to main page, server sends access token and refresh token to client. Access token is stored in local storage and refresh token is stored in database.
 
 - MAIN PAGE
 
   ![This is an image](https://i.hizliresim.com/tkl3y9y.PNG)
 
-  When we logged in, we see this page. You can access to the users table with menu on the left side.
+  This page welcomes us when we log in. Admins can access to the users table with menu on the left side.
 
 - USERS PAGE
 
   ![This is an image](https://i.hizliresim.com/tkl3y9y.PNG)
 
-  Admin and users can see the whole users table on this page. Admin can make CRUD operations.
+  Admins can see the whole users table on this page. Admin can make CRUD operations.
 
   Access token expires in 30 minutes. If it expires, client sends the refresh token to the server for a new access token. Server creates a new access token and sends to the client. Client stores the access token in local storage again.
+
+  When user or admin logs out the access token being deleted from local storage. Also refresh token being deleted from database.
 
 # Technologies
 
@@ -48,11 +50,11 @@ This project is a Single Sign-on based web app. Users,tokens etc. are not stored
 # Features
 
 - Admin:
+  - Login
   - Can see the whole users table in database
   - Create,update,delete users
 - Users:
   - Register and login
-  - Can see the whole users table in database
 
 # Build Process
 
