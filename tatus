@@ -1,0 +1,578 @@
+[33mcommit 72a446c2c2fd51cd7f18eec75e48380e57de91a7[m[33m ([m[1;36mHEAD -> [m[1;32mbeauty-master[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 17:55:26 2021 +0300
+
+    Update user.service.js
+
+[33mcommit 9892ee12af6af0f15d80cee595ed3f841e5af289[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 17:44:07 2021 +0300
+
+    Change https to http
+
+[33mcommit 4dfb8237a5ba031bc115cc9cbca94a992be643df[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 17:21:37 2021 +0300
+
+    Change api address
+
+[33mcommit 6aa2494a6d92f8f86d1a355c6a51a3f144e42082[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 17:13:26 2021 +0300
+
+    Delete unused link
+
+[33mcommit 2eb514ad48da538ecb0b0c70ef4c8eadcd888263[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 16:49:50 2021 +0300
+
+    Delete service worker
+
+[33mcommit b2a217aff20a71bccf52100610cf1d69cab016b7[m
+Merge: 72a4533 2f09f95
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 16:27:04 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit 72a4533a84b6942d1aad0add5be82cf191484278[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 16:26:50 2021 +0300
+
+    Add image to dashboard, delete forgot pass, add toastify to client
+
+[33mcommit 2f09f9588939813f470bf8eeab7b8cd8f1af774f[m
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 16:26:15 2021 +0300
+
+    change access token expire time
+
+[33mcommit c006310700c9cbe41eff0d524a5101a1428b8601[m
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 16:21:44 2021 +0300
+
+    add readme app.test
+
+[33mcommit a13610f1b32b56515ed7c9c632d353f2d0d6d292[m
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 15:49:08 2021 +0300
+
+    add api link to readme
+
+[33mcommit a874197289952927732692eb5094991415988876[m
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 15:31:06 2021 +0300
+
+    add jest and supertest packages
+
+[33mcommit 0b601ea43b76da6969306c4d8a922c9c0aea6718[m
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 15:29:22 2021 +0300
+
+    add server module export
+
+[33mcommit 854695881a91020c1b383cb8bc3a64d7d9560775[m
+Merge: e591091 19484e9
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 15:27:27 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit e59109164e849941744e119594d5c34ba7bdd4df[m
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 15:26:41 2021 +0300
+
+    add readme and app.test
+
+[33mcommit 19484e90bdb796a5cbf7675c804b9498413bfcc9[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Wed Dec 29 14:54:08 2021 +0300
+
+    remove unnecessary files
+
+[33mcommit 1d30f2f1de30f79b26de3982f2748ec169c69441[m
+Merge: 997916c 1bef710
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Wed Dec 29 14:13:10 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit 997916cb9901309e22cb3ee7f416fd3741b64fa2[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Wed Dec 29 14:12:58 2021 +0300
+
+    fix token bug
+
+[33mcommit 1bef710ff21bda79c08b3aca11fa37b53ce4f8fe[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 14:09:28 2021 +0300
+
+    Fix userlist error
+
+[33mcommit c13c284d579e29d96264945656824222cc11ea00[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 29 13:43:28 2021 +0300
+
+    Update package.json
+
+[33mcommit bf205988da89d1c15ad3007c35f2b3cf3d2fa73a[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Wed Dec 29 04:42:53 2021 +0300
+
+    refactoring
+
+[33mcommit eae4849611c463c4d1c90fef19f522f8ed6f6216[m
+Author: Sevda Avcılar <48406877+sevdavc@users.noreply.github.com>
+Date:   Wed Dec 29 02:22:12 2021 +0300
+
+    add refresh token db and refresh token verify
+
+[33mcommit c3376c29eceeac653f814dc46ed8491affec4925[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Tue Dec 28 23:10:26 2021 +0300
+
+    Update user list after adding user
+
+[33mcommit e451bc5dddf2e7c0069ee3d0215a9ad5b7b18c60[m
+Merge: 28b59f4 46ab9f0
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Tue Dec 28 22:58:03 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit 28b59f49b86d461ffd395d04c583c4dd37871496[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Tue Dec 28 22:57:21 2021 +0300
+
+    progress bar removed
+
+[33mcommit 46ab9f00ae0a1edb8d854c01f03e622f99bcc1f7[m
+Merge: f4ae41b f0e8000
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 22:30:02 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit f4ae41b9db94fd4de3083b05c64fa71d0cc27846[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 22:29:19 2021 +0300
+
+    axios interceptors && refresh token
+
+[33mcommit f0e80006ba86456a0e75b7c4185a91a7fe327d25[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Tue Dec 28 22:24:36 2021 +0300
+
+    Edit package name
+
+[33mcommit ef08b90139918229c9971de17d988b0b18a3c326[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 21:54:39 2021 +0300
+
+    add with local storage refresh token
+
+[33mcommit a8f1fc5cf2808e04ae512dc4e3a8a35b7bb60a48[m
+Merge: 81aea18 ab9692e
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Tue Dec 28 21:39:33 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit 81aea1819542b238c8c8711a84f402dfa9a93b9a[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Tue Dec 28 21:39:19 2021 +0300
+
+    Fix register error
+
+[33mcommit ab9692e25da6c34a447567ae7b5d5dcb9d3d48a1[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Tue Dec 28 21:32:00 2021 +0300
+
+    react-toastify added for crud operations
+
+[33mcommit 064e2220cdd0e8c554d4866511984f2bfa6df215[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Tue Dec 28 20:39:06 2021 +0300
+
+    Fix console errors and warnings
+
+[33mcommit c75dc7ba262a30947b68029c4557d82cce3154c8[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Tue Dec 28 20:19:41 2021 +0300
+
+    Fix re render bug
+
+[33mcommit 3e4969e21f53fa373a34bfbc69b8bac74afda76e[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 17:46:53 2021 +0300
+
+    add email validation && code refactor
+
+[33mcommit 19d003e1293e8938cfb3d732f88ef89cb8a3d44e[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 16:02:38 2021 +0300
+
+    add comments general
+
+[33mcommit f17da0febbcbf85a10e42486cb4b195178effe77[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 14:59:37 2021 +0300
+
+    code clean
+
+[33mcommit 4991556080fd78a7bbef049c9385a8194d4d6d93[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 14:37:23 2021 +0300
+
+    add null check api.controller createuser
+
+[33mcommit 64fe51eeed2da318e8e55d7206e9d77742b6da50[m[33m ([m[1;31morigin/tokenrefresh[m[33m)[m
+Merge: d8c4cbf c9b199f
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 02:08:56 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit d8c4cbf4bd9b2ae85a5b538b5018d4903571c2e5[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Tue Dec 28 02:08:17 2021 +0300
+
+    add log functionality && create mongodb log tables
+
+[33mcommit c9b199fc01e96ddd1506f0e8234c4e5cd2a23dfa[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Mon Dec 27 22:39:20 2021 +0300
+
+    Fix not updating data when page loaded
+
+[33mcommit 7ea15cf3b0433e42740323236bd947137ec79c49[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Mon Dec 27 21:19:59 2021 +0300
+
+    Fix user type
+
+[33mcommit 33a8a745aeb2ec9340bc607446c0edac4c7438d3[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Mon Dec 27 21:13:57 2021 +0300
+
+    Add redirect when logout
+
+[33mcommit 9445db82bbea0a79afdd82a44adfba306480369a[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Mon Dec 27 20:41:55 2021 +0300
+
+    Add route security if user has no access
+
+[33mcommit 822f0c687a58254e2f3ce55aa1347f3b67c21fad[m
+Merge: 8123c86 529251c
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Mon Dec 27 19:56:11 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit 8123c865909e14605c7f47d71c6d641131017f1b[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Mon Dec 27 19:55:58 2021 +0300
+
+    Add user informations to fields
+
+[33mcommit 1adb44e5beab28f572bf2dfe978ce2a798ba471d[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Mon Dec 27 19:43:47 2021 +0300
+
+    Fix empty email after update user
+
+[33mcommit 529251cabb20964fba9dc1b8ddf54e1c45cb2c65[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Mon Dec 27 19:34:45 2021 +0300
+
+    add docker add basic logger
+
+[33mcommit c60e5166dd832e93ca4893d92467e5a892e734e1[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Mon Dec 27 14:04:49 2021 +0300
+
+    add stored procedure && update README
+
+[33mcommit 664fefbdb031a0560936ff4de8fb80cba2973fea[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Mon Dec 27 05:11:45 2021 +0300
+
+    add remote mysql
+
+[33mcommit 63e2924bc1ac1cffa40ef3d9588440778d230fbd[m
+Merge: a1caf22 78c902f
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sun Dec 26 20:19:58 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit a1caf2292b226f12571f9e45a5a1a9a09cae2884[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sun Dec 26 20:15:46 2021 +0300
+
+    sync frontend-backend
+
+[33mcommit 78c902fcf3e43e412810f0aefb2732766a7cbb54[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sun Dec 26 18:00:10 2021 +0300
+
+    sync frontend-backend
+
+[33mcommit 58f38015b50b68f11e5184e7658495af353840d9[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sun Dec 26 16:26:24 2021 +0300
+
+    add user to localstorage
+
+[33mcommit 364bf5ecf28a140e615b15d2bb3804dbe8287c00[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Sun Dec 26 15:56:29 2021 +0300
+
+    Delete baceknd and consumer folders
+
+[33mcommit 74083f4421a3eb0c9c9b2306a5793db0eb36e65e[m
+Merge: bd396de af9dd19
+Author: Ali Özgenç <79049138+ozgencDev@users.noreply.github.com>
+Date:   Sun Dec 26 15:54:02 2021 +0300
+
+    Merge pull request #2 from ozgencDev/auth-api
+    
+    Auth api
+
+[33mcommit af9dd19d9fc4c078d6f478fc9928781db460471d[m[33m ([m[1;31morigin/implementRefreshToken[m[33m, [m[1;31morigin/auth-api[m[33m)[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sun Dec 26 15:51:30 2021 +0300
+
+    clear
+
+[33mcommit 8bb3399561beb32cdb420734d949aac82d8aab52[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sun Dec 26 15:48:20 2021 +0300
+
+    final auth-api
+
+[33mcommit bd396dec0388e555de864164e43b23ea8a2877bb[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Sun Dec 26 15:45:25 2021 +0300
+
+    Delete README.md
+
+[33mcommit e39a0ed874e3cd5ca7e215abcea0d2e679e4b8ac[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Sun Dec 26 15:44:23 2021 +0300
+
+    Create client side
+
+[33mcommit 7321688818ff6f16104f523f22b68e314c666e88[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sat Dec 25 20:47:02 2021 +0300
+
+    add permission
+
+[33mcommit 1e793924e152e02cd7605cb1dd474e53ff9f0d50[m[33m ([m[1;31morigin/unitTesting[m[33m, [m[1;31morigin/implementMysql[m[33m)[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sat Dec 25 12:29:25 2021 +0300
+
+    add new column = salt add middleware api/middleware/saltHash add auth/middleware/comparehash ipmlement add compHash auth.controller
+
+[33mcommit 6278703f2b623fda42ad712738d29217273a82d4[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Sat Dec 25 10:55:24 2021 +0300
+
+    fix params for route
+
+[33mcommit 681e2a857005d6570a6f860d6b6a4eee795839c8[m[33m ([m[1;31morigin/refreshTokenBranch[m[33m)[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Fri Dec 24 22:44:58 2021 +0300
+
+    adds sql logic to routes
+
+[33mcommit 76f67f792316e33904d89f24ed49402d381fcf0e[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Fri Dec 24 20:06:34 2021 +0300
+
+    Edit component names
+
+[33mcommit da4a964188e4a3a7b1422173e46e8f9865eadf4b[m[33m ([m[1;31morigin/rearchitecture[m[33m)[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Fri Dec 24 17:17:07 2021 +0300
+
+    Rename old name isAccessTokenValid new name isAuthorized
+
+[33mcommit 3e5939d5656273db6b96fd067bba61defe346a93[m
+Merge: fcf9ecd 83edfde
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Fri Dec 24 13:01:02 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit fcf9ecd037dc7a9021adfd0096ae623c060175bf[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Fri Dec 24 13:00:37 2021 +0300
+
+    Display todo added. React toaster messages added.
+
+[33mcommit 09bc60634000a124171a8256f5943f611650eeb1[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Fri Dec 24 12:47:19 2021 +0300
+
+    add router
+
+[33mcommit 83edfde56cbad99ad89bda2f6080642ff6ca795d[m
+Merge: f0e2c32 91764f7
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Fri Dec 24 03:34:05 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit f0e2c32f855814484468441db326ee2b386d06bd[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Fri Dec 24 03:33:36 2021 +0300
+
+    fix: postman - browser redirect bug
+
+[33mcommit ef4cdb0083242d33e0e6d4352e05054e6a0cf69d[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Fri Dec 24 02:20:38 2021 +0300
+
+    Add logout func
+
+[33mcommit 91764f7947d3ed9812e232f4c02bf51f342bc9c4[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Fri Dec 24 00:19:36 2021 +0300
+
+    Add mock login page and login route
+
+[33mcommit 775e5bf10346d8858154afc8c67f8e200d6ca270[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Fri Dec 24 00:13:36 2021 +0300
+
+    CRUD operations of users added
+
+[33mcommit 9430d7b121442649b1b6378ec7cc8c573b5c0569[m
+Author: ozgencdev <ozgencdev@gmail.com>
+Date:   Thu Dec 23 23:17:22 2021 +0300
+
+    add sso-server directory
+
+[33mcommit 6081209a91d73388cd415714359c7d00a7b111d2[m
+Merge: 41b540e f626af4
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Thu Dec 23 22:56:41 2021 +0300
+
+    Mainpage added
+
+[33mcommit 41b540e735e0f4fa1a5f824a13e3d944513e6a27[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Thu Dec 23 22:53:47 2021 +0300
+
+    Mainpage added
+
+[33mcommit f626af45e64649c34998370e8c367fa48f7d6d3e[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Thu Dec 23 22:23:40 2021 +0300
+
+    Fix material ui
+
+[33mcommit d0f9cfb9eb1921d8b67e5419a78dc3984a3cd92d[m
+Merge: 3fad160 ee32eac
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Thu Dec 23 21:56:27 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit 3fad16074b7c71553af57ab31feb27b4c876c27f[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Thu Dec 23 21:56:23 2021 +0300
+
+    Fix getallusers route
+
+[33mcommit ee32eac7768e9bbe45873e0145005fc8dfc4534a[m
+Merge: f42c814 0ac08ce
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Thu Dec 23 21:54:24 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit f42c814a8ff00ef986fb52bd481c60fe6a2182ba[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Thu Dec 23 21:53:50 2021 +0300
+
+    frontend init
+
+[33mcommit 0ac08ce4eabfd38d58dd71bf43f1508cdab947b3[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Thu Dec 23 00:03:04 2021 +0300
+
+    Fix update user model
+
+[33mcommit c1ec31562b22fe2aa4d19a603ad8767ca9be75f0[m
+Merge: 6ca4f76 b4f72dd
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 22 23:46:05 2021 +0300
+
+    Merge branch 'master' of https://github.com/ozgencDev/ozgencDev-Mission-Impossible-sifa
+
+[33mcommit 6ca4f767b7b24265b6376f1d254fc5ec4fb431a3[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 22 23:45:44 2021 +0300
+
+    Edit create and delete user routes, controllers
+
+[33mcommit b4f72dd1794e0f453066dd295867ee0477d095a1[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Wed Dec 22 22:23:51 2021 +0300
+
+    morgan logging changes
+
+[33mcommit 79b3fdab6a7cfbe912ba13afed9fbbc98f7f512d[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Wed Dec 22 20:11:31 2021 +0300
+
+    Edit db connection
+
+[33mcommit a441b2f9c88e5d4b6339f339c99fc9b8ecb597a6[m
+Merge: f9de0a4 725c526
+Author: furkan ceylan <32003938+furkan-ceylan@users.noreply.github.com>
+Date:   Wed Dec 22 20:08:38 2021 +0300
+
+    Merge pull request #1 from ozgencDev/backend
+    
+    Backend
+
+[33mcommit 725c526badd92e9e957462a8a61b5e7c63e4e77e[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Wed Dec 22 12:21:03 2021 +0300
+
+    Logger middleware morgan added.
+
+[33mcommit 3c8a2eb7e41200f6439677ce3e3b852055ebdd63[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Tue Dec 21 23:37:57 2021 +0300
+
+    unit testing folder/first test created
+
+[33mcommit de8099a3a6f240e69ef4c60796c8ac02fa8b53de[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Tue Dec 21 22:42:09 2021 +0300
+
+    EDIT: db connections
+
+[33mcommit aef53777752f0db49c8edff45006a1a35e860e8b[m
+Author: Ilker <ikurtulan97@gmail.com>
+Date:   Tue Dec 21 22:06:06 2021 +0300
+
+    db
+
+[33mcommit d34921ffba75c619325224e4447d42a050ba84c3[m
+Author: furkan ceylan <ceylan.furkan@outlook.com>
+Date:   Tue Dec 21 21:15:41 2021 +0300
+
+    Create backend folder, user routes file, user model file, db file, edit index file, user controller and add mysql, express, morgan, dotenv libs
+
+[33mcommit f9de0a4cc28d27b75d0a9221a553ea7727ead5bc[m
+Author: Ali Özgenç <79049138+ozgencDev@users.noreply.github.com>
+Date:   Tue Dec 21 12:13:28 2021 +0300
+
+    Initial commit
