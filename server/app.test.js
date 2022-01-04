@@ -5,7 +5,7 @@ userOne = {
   username: "Api123",
   password: "123abcd",
   token:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJVSUQiOjExNjQsInVzZXJUeXBlIjoidXNlciIsImlhdCI6MTY0MDY5ODk1OCwiZXhwIjoxNjQwNzg1MzU4fQ.MucEHkKzrfr73dLtXhZSUO_2BRXP3MHxuoyVQ3cUm8OIpdvNBX2duf3ODB97hdZoXghOeIFLbtMHxeo2g4nWy1Bt1AtL5fOfVrsmMHfgIaUc29azkpXONnKDD5OLmTehjkgbDAuiu88mo0xIzOfRa3btfZaDG3aJvHMRog0he3o",
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJVSUQiOjQsInVzZXJUeXBlIjoiYWRtaW4iLCJpYXQiOjE2NDEzMjY3ODMsImV4cCI6MTY0MTMyNzY4M30.Jpp5EZ6NsB9radK37VHSx33mRu5Nmtqp8l5R6r1rBVJlZdyjVZxQKTj6YFQWSFfDkEgFrSXWE47AlkTRLONKvOxv6CllHQBUw-z9f6YdelFkTNzRTFkeucnJoKsVMPMuKlTwvuTCUfFavs9BS0N56X4aVdTJ1D87zarADKe-eGs",
 };
 
 describe("Given username", () => {
@@ -74,7 +74,7 @@ describe("API Routes", () => {
 
   test("Updating User Authorized", async () => {
     const response = await request(app)
-      .put("/api/update/14")
+      .put("/api/update/764")
       .set("x-access-token", userOne.token)
       .send({
         email: "deneme@gmail.com",
@@ -83,17 +83,9 @@ describe("API Routes", () => {
   });
 
   test("Updating User UnAuthorized", async () => {
-    const response = await request(app).put("/api/update/14");
+    const response = await request(app).put("/api/update/764");
     expect(response.statusCode).toBe(401);
   });
-
-  test("Deleting User Authorized", async () => {
-    const response = await request(app)
-      .delete("/api/delete/144")
-      .set("x-access-token", useOne.token);
-    expect(response.statusCode).toBe(200);
-  });
-  14;
 
   test("Deleting User UnAuthorized", async () => {
     const response = await request(app).delete("/api/delete/144");

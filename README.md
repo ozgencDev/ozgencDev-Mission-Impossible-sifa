@@ -72,11 +72,29 @@ For Code Editor:
   npm start
   ```
 - For Server:
+
   ```
   cd server
   npm install
   npm start
+  **********************
+  You can use these accounts for frontend login page
+
+  admin account
+    username: admin
+    password: 12345
+
+  user account
+    username: furcey
+    password: 12345
+
+  ***********************
   ```
+
+# Test
+
+<b>! Crucial Warning !</b><br>
+For the test to work properly, we must log in with the admin and copy the string of the access token from the local storage, then paste it in the userOne.token part in app.test.js, thanks to this, we will gain access to perform crud operations.
 
 # API and Frontend Deploy Link
 
