@@ -38,6 +38,10 @@ This project is a Single Sign-on based web app. Users and tokens are not stored 
 
   When user or admin logs out the access token being deleted from local storage. Also refresh token being deleted from database.
 
+# Diagrams
+
+[README.md for Diagrams](server/README.md)
+
 # Technologies
 
 - Front end: ReactJS
@@ -59,8 +63,6 @@ This project is a Single Sign-on based web app. Users and tokens are not stored 
 
 # Build Process
 
-For Docker:
-
 For Code Editor:
 
 - For Client:
@@ -71,47 +73,15 @@ For Code Editor:
   ```
 - For Server:
   ```
-  cd sso-server
-  cd SsoServer
+  cd server
   npm install
   npm start
   ```
 
-# Stored Procedure
-
-CREATE DEFINER=`b17bff729dbf7d`@`%` PROCEDURE `createuser`(IN username varchar(255),IN user_name varchar(255),IN user_surname varchar(255),IN email varchar(255),IN user_type varchar(255) ,IN password varchar(255),IN salt varchar(255))
-BEGIN
-INSERT INTO users (`username` , user_name ,user_surname ,email ,user_type ,password ,salt) VALUES (username , user_name ,user_surname ,email ,user_type ,password,salt);
-END
-
-CREATE DEFINER=`b17bff729dbf7d`@`%` PROCEDURE `deleteuser`(IN uid INT)
-BEGIN
-DELETE FROM users WHERE id = uid;
-END
-
-CREATE DEFINER=`b17bff729dbf7d`@`%` PROCEDURE `getListOfUsers`()
-BEGIN
-SELECT \* FROM Users;
-END
-
-CREATE DEFINER=`b17bff729dbf7d`@`%` PROCEDURE `getUserInfo`(IN uid INT)
-BEGIN
-SELECT \* FROM Users WHERE id = uid;
-END
-
-CREATE DEFINER=`b17bff729dbf7d`@`%` PROCEDURE `login`(IN uname varchar(255))
-BEGIN
-SELECT \* FROM Users WHERE username = (uname);
-END
-
-CREATE DEFINER=`b17bff729dbf7d`@`%` PROCEDURE `updateuser`(IN username varchar(255),IN user_name varchar(255),IN user_surname varchar(255),IN email varchar(255),IN uid INT)
-BEGIN
-UPDATE Users SET username = username, user_name = user_name, user_surname = user_surname, email = email WHERE id = uid;
-END
-
-# API Link
+# API and Frontend Deploy Link
 
 - [API](http://mission-alot.herokuapp.com/)
+- [Front End](https://mission-impossible.vercel.app/login)
 
 # Contributors
 
