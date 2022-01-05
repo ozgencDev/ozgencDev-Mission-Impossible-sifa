@@ -60,6 +60,7 @@ describe("API Routes", () => {
     expect(response.statusCode).toBe(404);
   });
 
+  //.get("/api/user/(The id should be in database!)")
   test("User Info Authorized", async () => {
     const response = await request(app)
       .get("/api/user/94")
@@ -72,6 +73,7 @@ describe("API Routes", () => {
     expect(response.statusCode).toBe(404);
   });
 
+  //.get("/api/update/(The id should be in database!)")
   test("Updating User Authorized", async () => {
     const response = await request(app)
       .put("/api/update/764")
@@ -85,6 +87,14 @@ describe("API Routes", () => {
   test("Updating User UnAuthorized", async () => {
     const response = await request(app).put("/api/update/764");
     expect(response.statusCode).toBe(401);
+  });
+
+  //.get("/api/delete/(The id should be in database!)")
+  test("Deleting User Authorized", async () => {
+    const response = await request(app)
+      .delete("/api/delete/144")
+      .set("x-access-token", useOne.token);
+    expect(response.statusCode).toBe(200);
   });
 
   test("Deleting User UnAuthorized", async () => {
