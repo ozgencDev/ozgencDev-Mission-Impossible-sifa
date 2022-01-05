@@ -5,11 +5,12 @@ This is a graduation project from Alotech Bootcamp.
 ## TABLE OF CONTENT
 
 - [Introduction](#introduction)
+- [Diagrams](#diagrams)
 - [Technologies](#technologies)
 - [Features](#features)
 - [Build Process](#build-process)
-- [Stored Procedure](#stored-procedure)
-- [API Link](#api-link)
+- [Test](#test)
+- [API - Frontend Link](#api-link)
 - [Contributors](#contributors)
 
 # Introduction
