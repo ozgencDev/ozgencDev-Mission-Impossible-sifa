@@ -6,13 +6,15 @@ const api = "/api/";
 
 const client = axios.create({
   baseURL: API_URL,
-  headers: authHeader(),
+  headers: authHeader()
 });
 
 const refTokCli = axios.create({
   baseURL: API_URL,
-  headers: authHeader(),
+  headers: authHeader()
 });
+
+/* If the access token is expired, we wait for a 401 return to request a new access token, if 401 is not returned, the routes are requested normally. */
 
 client.interceptors.response.use(
   (response) => response,
@@ -23,7 +25,7 @@ client.interceptors.response.use(
       if (user) {
         return refTokCli
           .post("/auth/refresh", {
-            refreshToken: JSON.parse(user).refreshToken,
+            refreshToken: JSON.parse(user).refreshToken
           })
           .then((response) => {
             const { accessToken } = response.data;
@@ -34,7 +36,7 @@ client.interceptors.response.use(
             );
             //client.defaults.headers.common["x-access-token"] = `${accessToken}`;
             return;
-          }); //vvvvv sıkıntı olabilir catch
+          });
       }
     }
     return Promise.reject(error);
@@ -42,29 +44,28 @@ client.interceptors.response.use(
 );
 
 const getPublicContent = () => {
-  return client.get(API_URL + api + "all"); //buraya varırken 401 alıyoruz api validation kısmında
+  return client.get(API_URL + api + "all");
 };
-
+/* api/users request */
 const getUserBoard = () => {
   return client.get(API_URL + api + "users", { headers: authHeader() });
 };
-
+/* api/create request */
 const createUser = (user) => {
   return client.post(API_URL + api + "create", user, { headers: authHeader() });
 };
-
+/* api/update request */
 const updateUserById = (id, user) => {
   return client.put(API_URL + api + "update/" + id, user, {
-    headers: authHeader(),
+    headers: authHeader()
   });
 };
-
+/* api/delete request */
 const deleteUserById = (id) => {
   return client.delete(API_URL + api + "delete/" + id, {
-    headers: authHeader(),
+    headers: authHeader()
   });
 };
-
 const getAdminBoard = () => {
   return client.get(API_URL + api + "admin", { headers: authHeader() });
 };
@@ -75,5 +76,5 @@ export {
   getAdminBoard,
   createUser,
   updateUserById,
-  deleteUserById,
+  deleteUserById
 };

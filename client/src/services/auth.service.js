@@ -6,15 +6,15 @@ const register = (username, email, password) => {
   return axios.post(API_URL, {
     username,
     email,
-    password,
+    password
   });
 };
-
+/* Saves json object returned from auth/log to local storage */
 const login = (username, password) => {
   return axios
     .post(API_URL, {
       username,
-      password,
+      password
     })
     .then((response) => {
       console.log(response.data);
@@ -25,7 +25,7 @@ const login = (username, password) => {
       return response.data;
     });
 };
-
+/* Deletes user information and access - refresh token from local storage */
 const logout = () => {
   localStorage.removeItem("user");
 };
@@ -38,5 +38,5 @@ export default {
   register,
   login,
   logout,
-  getCurrentUser,
+  getCurrentUser
 };
