@@ -16,28 +16,28 @@ import account from "../../_mocks_/account";
 
 export default function AccountPopover() {
   const anchorRef = useRef(null);
-  const [open, setOpen] = useState(false);
-  const [user, setUser] = useState();
+  const [open, setOpen] = useState(false); //set state to showing modal
+  const [user, setUser] = useState(); //set state to user data
 
   useEffect(() => {
-    let userLS = JSON.parse(localStorage.getItem("user"));
-    if (userLS) {
-      setUser(userLS);
+    let userLS = JSON.parse(localStorage.getItem("user")); //get user data from local storage
+    if (userLS) { //if user data is not empty
+      setUser(userLS); //set user data to state
     }
   }, []);
 
   const handleOpen = () => {
-    setOpen(true);
+    setOpen(true); //set state to showing modal
   };
   const handleClose = () => {
-    setOpen(false);
+    setOpen(false);   //set state to hiding modal
   };
 
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.removeItem("user");
-    navigate('/login');
+    localStorage.removeItem("user"); //if user logout remove user data from local storage
+    navigate('/login'); //navigate to login page
   }
 
   return (

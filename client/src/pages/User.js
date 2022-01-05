@@ -52,28 +52,28 @@ const TABLE_HEAD = [
 ];
 
 export default function User() {
-  const [open, setOpen] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [open, setOpen] = useState(false); //set state to showing modal
+  const [showPassword, setShowPassword] = useState(false); //set state to showing password
+  const [users, setUsers] = useState([]); //set state to users
 
   useEffect(() => {
-    const getUsers = async () => {
+    const getUsers = async () => { //get users from backend
       await getUserBoard().then(
         function (response) {
           console.log(response);
-          if (response.status === 200) {
-            setUsers(response.data);
+          if (response.status === 200) { //if user is created
+            setUsers(response.data); //set users state 
           }
         })
         .catch(function (error) {
-          console.log(error);
+          console.log(error); //if user is not created, show error message
         });;
     };
-    getUsers();
+    getUsers(); //call getUsers function
   }, []);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true); //open modal
+  const handleClose = () => setOpen(false); //close modal
 
   const style = {
     position: "absolute",
@@ -101,11 +101,11 @@ export default function User() {
       .email("Email must be a valid email address")
       .required("Email is required"),
     username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string().required("Password is required"), //check username, password, email, firstname and lastname validity
   });
 
   const createPopup = (user) => {
-    toast.success(`${user} just added`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true});
+    toast.success(`${user} just added`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true}); //show toast message
   }
 
   const formik = useFormik({
@@ -115,9 +115,9 @@ export default function User() {
       email: "",
       username: "",
       password: "",
-    },
+    }, //set initial values
     validationSchema: RegisterSchema,
-    onSubmit: (values) => {
+    onSubmit: (values) => { //if form is submitted
       const user = {
         user_name: values.firstname,
         user_surname: values.lastname,
@@ -125,34 +125,33 @@ export default function User() {
         username: values.username,
         password: values.password,
         user_type: "User",
-      };
-      setUsers([...users, user]);
-      createUser(user)
+      }; //create user object
+      setUsers([...users, user]); //add user to users state
+      createUser(user) //send user to backend to create user
         .then(function (response) {
-          console.log(response);
-          if (response.status === 200) {
-            handleClose();
+          if (response.status === 200) { //if user is created
+            handleClose(); //close modal
             values.firstname = "";
             values.lastname = "";
             values.email = "";
             values.username = "";
-            values.password = "";
-            createPopup(user.user_name);
+            values.password = ""; //clear form
+            createPopup(user.user_name); //show toast message
           }
         })
         .catch(function (error) {
-          console.log(error);
+          console.log(error); //if user is not created, show error message
         });
     },
   });
 
   const deleteUser = async (id) => {
-    await deleteUserById(id);
-    setUsers(users.filter((user) => user.id !== id));
+    await deleteUserById(id); //delete user from backend
+    setUsers(users.filter((user) => user.id !== id)); //delete user from users state
   };
 
   const updateUser = (id, username, name, surname, password, email) => {
-    setUsers(
+    setUsers( 
       users.map((user) =>
         user.id === id
           ? {
@@ -161,14 +160,14 @@ export default function User() {
               user_name: name,
               user_surname: surname,
               password: password,
-              email: email,
+              email: email, // update user
             }
-          : user
+          : user //if user id is not equal to id, return user
       )
     );
   };
 
-  const { errors, touched, handleSubmit, isSubmitting, getFieldProps } = formik;
+  const { errors, touched, handleSubmit, isSubmitting, getFieldProps } = formik; //get formik props
 
   return (
     <Page title="User | Minimal-UI">

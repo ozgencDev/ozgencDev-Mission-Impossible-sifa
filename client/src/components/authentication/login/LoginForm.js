@@ -20,19 +20,19 @@ import axios from "axios";
 
 export default function LoginForm() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); //set state to showing password
+  const [error, setError] = useState(false); //set state to showing error message
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string().required("Password is required"),//check username and password validity
   });
 
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
-      remember: true,
+      remember: true,//set initial values
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
@@ -40,19 +40,18 @@ export default function LoginForm() {
         .post("https://mission-alot.herokuapp.com/auth/login", {
           username: values.email,
           password: values.password,
-        })
+        })//send data to backend to check if user is valid
         .then(function (response) {
           console.log(response);
-          if (response.status === 200) {
-            console.log(response.data);
+          if (response.status === 200) {//if user is valid
             if (response.data.accessToken) {
-              localStorage.setItem("user", JSON.stringify(response.data));
+              localStorage.setItem("user", JSON.stringify(response.data)); //store user data in local storage
             }
-            navigate("/dashboard", { replace: true });
+            navigate("/dashboard", { replace: true }); //navigate to dashboard
           }
         })
         .catch(function (error) {
-          setError(true);
+          setError(true); //if user is invalid, show error message
         });
     },
   });
@@ -60,7 +59,7 @@ export default function LoginForm() {
   const { errors, touched, handleSubmit} = formik;
 
   const handleShowPassword = () => {
-    setShowPassword((show) => !show);
+    setShowPassword((show) => !show); //toggle show password
   };
 
   return (

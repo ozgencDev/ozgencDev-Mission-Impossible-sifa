@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 export default function RegisterForm() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); //set state to showing password
 
   const RegisterSchema = Yup.object().shape({
     firstname: Yup.string()
@@ -31,7 +31,7 @@ export default function RegisterForm() {
       .email("Email must be a valid email address")
       .required("Email is required"),
     username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string().required("Password is required"),//check username, password, email, firstname and lastname validity
   });
 
   const formik = useFormik({
@@ -41,7 +41,7 @@ export default function RegisterForm() {
       email: "",
       username: "",
       password: "",
-    },
+    },//set initial values
     validationSchema: RegisterSchema,
 
     onSubmit: (values) => {
@@ -52,19 +52,17 @@ export default function RegisterForm() {
         username: values.username,
         password: values.password,
         user_type: "user",
-      };
-      createUser(user)
+      };//set a user from form values
+      createUser(user)//send user to backend to create user
         .then(function (response) {
-          console.log(response);
-          if (response.status === 200) {
-            navigate("/dashboard", { replace: true });
-            toast.success(`${user.user_name} just registered`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true});
+          if (response.status === 200) { //if user is created
+            navigate("/dashboard", { replace: true }); //navigate to dashboard
+            toast.success(`${user.user_name} just registered`, {position: toast.POSITION.TOP_CENTER, hideProgressBar: true}); //show success message
           }
         }
-        
         )
         .catch(function (error) {
-          console.log(error);
+          console.log(error); //if user is not created, show error message
         });
     },
   });

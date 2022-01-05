@@ -1,38 +1,39 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "https://mission-alot.herokuapp.com";
-const api = "/api/";
+const API_URL = "https://mission-alot.herokuapp.com"; //url
+const api = "/api/"; //api url
 
-const client = axios.create({
+const client = axios.create({ //create axios client
   baseURL: API_URL,
   headers: authHeader()
 });
 
-const refTokCli = axios.create({
+const refTokCli = axios.create({ //create axios client for refTokCli
   baseURL: API_URL,
   headers: authHeader()
 });
 
-/* If the access token is expired, we wait for a 401 return to request a new access token, if 401 is not returned, the routes are requested normally. */
-
-client.interceptors.response.use(
+/* If the access token is expired, we wait for a 401 
+return to request a new access token, if 401 is not returned, 
+the routes are requested normally. */
+client.interceptors.response.use( 
   (response) => response,
   (error) => {
     if (error.response.status === 401) {
-      const user = localStorage.getItem("user"); //access çek buradan
+      const user = localStorage.getItem("user"); //get user data from local storage
 
-      if (user) {
+      if (user) { //if user is valid
         return refTokCli
-          .post("/auth/refresh", {
-            refreshToken: JSON.parse(user).refreshToken
+          .post("/auth/refresh", { 
+            refreshToken: JSON.parse(user).refreshToken //send refresh token to backend to check if token is valid
           })
           .then((response) => {
-            const { accessToken } = response.data;
+            const { accessToken } = response.data; //get access token from response
 
             localStorage.setItem(
               "user",
-              JSON.stringify(Object.assign(JSON.parse(user), { accessToken }))
+              JSON.stringify(Object.assign(JSON.parse(user), { accessToken })) //store user data in local storage
             );
             //client.defaults.headers.common["x-access-token"] = `${accessToken}`;
             return;
@@ -44,7 +45,7 @@ client.interceptors.response.use(
 );
 
 const getPublicContent = () => {
-  return client.get(API_URL + api + "all");
+  return client.get(API_URL + api + "all"); //get all data from backend
 };
 /* api/users request */
 const getUserBoard = () => {

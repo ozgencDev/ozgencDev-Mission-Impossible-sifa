@@ -7,14 +7,14 @@ import {useState, useEffect} from 'react';
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
-  const [userName, setUserName] = useState();
-  const [email, setEmail] = useState();
+  const [userName, setUserName] = useState(); //set state to user name
+  const [email, setEmail] = useState(); //set state to user email
 
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem('user'));
-    setUserName(user.name+' '+user.surname);
-    setEmail(user.email);
-  }, [userName, email]);
+    let user = JSON.parse(localStorage.getItem('user')); //get user data from local storage
+    setUserName(user.name+' '+user.surname); //set user name
+    setEmail(user.email); //set user email
+  }, [userName, email]); 
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">

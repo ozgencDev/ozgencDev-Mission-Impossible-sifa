@@ -21,13 +21,13 @@ import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
-export default function UserMoreMenu({ user, deleteUser, updateUser }) {
+export default function UserMoreMenu({ user, deleteUser, updateUser }) { //get props
   const ref = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); //set state to showing modal
+  const [isModalOpen, setModalOpen] = useState(false); //set state to modal
 
-  const handleOpen = () => setModalOpen(true);
-  const handleClose = () => setModalOpen(false);
+  const handleOpen = () => setModalOpen(true); //open modal
+  const handleClose = () => setModalOpen(false);  //close modal
 
   const UpdateSchema = Yup.object().shape({
     firstname: Yup.string()
@@ -41,7 +41,7 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
     email: Yup.string()
       .email("Email must be a valid email address")
       .required("Email is required"),
-    username: Yup.string().required("Username is required"),
+    username: Yup.string().required("Username is required"),  //check username, email, firstname and lastname validity
   });
 
   const formik = useFormik({
@@ -50,7 +50,7 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
       lastname: user.user_surname,
       email: user.email,
       username: user.username,
-    },
+    },//set initial values
     validationSchema: UpdateSchema,
     onSubmit: (values) => {
       let newUser = {
@@ -58,10 +58,10 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
         user_surname: values.lastname,
         email: values.email,
         username: values.username,
-      };
-      updateUserById(user.id, newUser)
+      };//set a user from form values
+      updateUserById(user.id, newUser) //send user to backend to update user
         .then(function (response) {
-          if (response.status === 200) {
+          if (response.status === 200) { //if user is updated
             updateUser(
               user.id,
               values.username,
@@ -69,18 +69,17 @@ export default function UserMoreMenu({ user, deleteUser, updateUser }) {
               values.lastname,
               user.password,
               values.email
-            );
-            handleClose();
+            ); //update user in state
+            handleClose(); //close modal
             values.firstname = user.user_name;
             values.lastname = user.user_surname;
             values.email = user.email;
-            values.username = user.username;
-
+            values.username = user.username; //set form values to user values
           }
-          updatePopup(user.user_name);
+          updatePopup(user.user_name); //show popup
         })
         .catch(function (error) {
-          console.log(error);
+          console.log(error); //if user is not updated, show error message
         });
     },
   });
